@@ -17,8 +17,10 @@
     ],
     "require": {
         "php": "^8.2",
+        "illuminate/contracts": "^10.0 || ^11.0",
+        "illuminate/support": "^10.0 || ^11.0",
         "spatie/laravel-package-tools": "^1.16",
-        "illuminate/contracts": "^10.0||^11.0"
+        "ralphjsmit/laravel-glide": "^1.2.1"
     },
     "require-dev": {
         "laravel/pint": "^1.14",
@@ -30,8 +32,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Fuelviews\\Navigation\\": "src/",
-            "Fuelviews\\Navigation\\Database\\Factories\\": "database/factories/"
+            "Fuelviews\\Navigation\\": "src/"
         }
     },
     "autoload-dev": {

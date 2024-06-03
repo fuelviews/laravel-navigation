@@ -25,15 +25,10 @@ composer require fuelviews/laravel-navigation
 
 You can publish and run the migrations with:
 
-```bash
-php artisan vendor:publish --tag="laravel-navigation-migrations"
-php artisan migrate
-```
-
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-navigation-config"
+php artisan vendor:publish --tag="navigation-config"
 ```
 
 This is the contents of the published config file:
