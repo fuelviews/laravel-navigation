@@ -7,6 +7,7 @@ use Illuminate\View\Component;
 class MobileNavigation extends Component
 {
     public $navigationItems;
+
     public $bgClass;
 
     public function __construct($bgClass = null)
