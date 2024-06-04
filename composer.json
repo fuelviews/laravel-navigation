@@ -15,12 +15,24 @@
             "role": "Developer"
         }
     ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../laravel-form"
+        },
+        {
+            "type": "path",
+            "url": "../laravel-middleware"
+        }
+    ],
     "require": {
         "php": "^8.2",
         "illuminate/contracts": "^10.0 || ^11.0",
         "illuminate/support": "^10.0 || ^11.0",
         "spatie/laravel-package-tools": "^1.16",
-        "ralphjsmit/laravel-glide": "^1.2.1"
+        "ralphjsmit/laravel-glide": "^1.2.1",
+        "fuelviews/laravel-form": "dev-main",
+        "fuelviews/laravel-middleware": "dev-main"
     },
     "require-dev": {
         "laravel/pint": "^1.14",

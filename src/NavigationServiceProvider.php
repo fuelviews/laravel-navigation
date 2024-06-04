@@ -3,6 +3,8 @@
 namespace Fuelviews\Navigation;
 
 
+use Fuelviews\LaravelForm\Http\Middleware\FormHandleGclid;
+use Fuelviews\LaravelForm\Http\Middleware\FormHandleUtm;
 use Fuelviews\Navigation\View\Components\Mobile\MobileNavigation;
 use Fuelviews\Navigation\View\Components\Desktop\DesktopDropdownButton;
 use Fuelviews\Navigation\View\Components\Desktop\DesktopNavigation;
@@ -24,8 +26,8 @@ class NavigationServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-navigation')
             ->hasConfigFile('navigation')
-            ->hasViewComponents('navigation::', NavigationScroll::class, TopBar::class)
-            ->hasViews();
+            ->hasViews('navigation')
+            ->hasViewComponents('navigation', NavigationScroll::class, TopBar::class, MobileNavigation::class, DesktopNavigation::class, DesktopDropdownButton::class);
     }
 
 
