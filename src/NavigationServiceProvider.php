@@ -24,7 +24,7 @@ class NavigationServiceProvider extends PackageServiceProvider
             ->name('laravel-navigation')
             ->hasConfigFile('navigation')
             ->hasViews('navigation')
-            ->hasViewComponents('navigation', NavigationScroll::class, TopBar::class, MobileNavigation::class, DesktopNavigation::class, DesktopDropdownButton::class);
+            ->hasViewComponents('navigation', NavigationScroll::class, TopBar::class);
     }
 
     public function bootingPackage(): void
