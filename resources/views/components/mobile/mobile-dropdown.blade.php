@@ -7,7 +7,7 @@
 @endphp
 
 <div x-data="{ open: false }" class="relative w-full">
-    <a @click="open = !open" class="w-full text-left flex items-center justify-start cursor-pointer">
+    <a @click="open = !open" @click.outside="open = false; manualToggle = false" class="w-full text-left flex items-center justify-start cursor-pointer">
         <button {{ $attributes->merge(['class' => $classes]) }}>
             {{ $name }}
             <x-navigation::dropdown-icon />

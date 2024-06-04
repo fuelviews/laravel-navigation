@@ -31,13 +31,16 @@
             </div>
 
             <!-- Hamburger (Shows on Mobile) -->
-            <div class="flex items-center md:hidden space-x-4 ">
-                <x-navigation::hamburger-button />
+            <div class="flex items-center md:hidden space-x-4">
+                <button @click="open = !open">
+                    <x-navigation::hamburger-button />
+                </button>
             </div>
         </div>
 
         <!-- Mobile Navigation Menu -->
-        <div :class="{ 'block': open, 'hidden': ! open }" class="hidden md:hidden bg-white overflow-y-auto max-h-screen -mx-2 mt-2">
+        <div x-show="open" @click.away="open = false" class="md:hidden bg-white overflow-y-auto max-h-screen -mx-2 mt-2">
+
 
             <div class="border-t border-gray-300">
                 <x-navigation::mobile.mobile-navigation />

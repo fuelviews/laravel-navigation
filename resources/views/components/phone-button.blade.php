@@ -1,5 +1,5 @@
 <div>
-    <a href="tel:{{ config('navigation.phone') }}">
+    <a href="tel:{{ config('navigation.phone') }}" @click="open = !open">
         @if (/*request()->query('gclid') || */request()->cookie('gclid') || session('gclid'))
             <button class="font-brand flex rounded-md bg-prime px-2 py-2 text-md md:text-lg font-bold text-white hover:bg-cta hover:text-black break-keep text-nowrap" onclick="dataLayer.push({'event': 'Phone_Call_Gclid', 'phone_number': '{{ config('navigation.phone') }}'});">
         @else
