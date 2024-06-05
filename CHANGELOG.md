@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v0.0.3 - 2024-06-05
+
+### What's Changed
+
+* Bump aglipanci/laravel-pint-action from 2.3.1 to 2.4 by @dependabot in https://github.com/fuelviews/laravel-navigation/pull/4
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v0.0.2...v0.0.3
+
 ## v0.0.2 - 2024-06-05
 
 ### What's Changed
