@@ -17,12 +17,12 @@
     ],
     "repositories": [
         {
-            "type": "path",
-            "url": "../laravel-middleware"
+            "type": "vcs",
+            "url": "git@github.com:fuelviews/laravel-middleware.git"
         },
         {
-            "type": "path",
-            "url": "../laravel-form"
+            "type": "vcs",
+            "url": "git@github.com:fuelviews/laravel-form.git"
         }
     ],
     "require": {
@@ -88,6 +88,6 @@
             }
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }
