@@ -15,7 +15,7 @@
      "
      :class="{
          'bg-white text-gray-700': scrolled && transparentNav,
-         '{{ config('navigation.transparent_nav_background') ? 'bg-transparent text-white' : 'bg-white text-gray-700' }}': !scrolled || !transparentNav
+         '{{ Navigation::isTransparentNavBackground() ? 'bg-transparent text-white' : 'bg-white text-gray-700' }}': !scrolled || !transparentNav
      }"
      class="bg-white duration-600 fixed inset-x-0 top-0 z-40 drop-shadow-2xl transition-all"
      x-cloak

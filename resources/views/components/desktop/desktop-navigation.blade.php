@@ -1,6 +1,4 @@
-
-
-@foreach(collect(config('navigation.navigation'))->sortBy('position') as $item)
+@foreach(Navigation::getNavigationItems() as $item)
     @if($item['type'] === 'link')
         <x-navigation::desktop.desktop-navigation-link :href="route($item['route'])" :active="request()->routeIs($item['route'])">
             {{ __($item['name']) }}

@@ -1,5 +1,5 @@
 <!-- Navigation Scroll/Transparency -->
-<x-navigation::navigation-scroll :isTransparent="config('navigation.transparent_nav_background')">
+<x-navigation::navigation-scroll :isTransparent="Navigation::isTransparentNavBackground()">
 
     <!-- Top Nav Bar (Shows on Mobile) -->
     <x-navigation::top-bar align="center" />

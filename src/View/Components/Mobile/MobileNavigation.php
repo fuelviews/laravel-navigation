@@ -6,13 +6,10 @@ use Illuminate\View\Component;
 
 class MobileNavigation extends Component
 {
-    public $navigationItems;
-
     public $bgClass;
 
     public function __construct($bgClass = null)
     {
-        $this->navigationItems = collect(config('navigation.navigation'))->sortBy('position')->values();
         $this->bgClass = $bgClass;
     }
 
@@ -27,8 +24,6 @@ class MobileNavigation extends Component
 
     public function render()
     {
-        return view('navigation::components.mobile.mobile-navigation', [
-            'navigationItems' => $this->navigationItems,
-        ]);
+        return view('navigation::components.mobile.mobile-navigation');
     }
 }

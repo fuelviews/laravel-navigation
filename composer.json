@@ -18,11 +18,11 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../laravel-form"
+            "url": "../laravel-middleware"
         },
         {
             "type": "path",
-            "url": "../laravel-middleware"
+            "url": "../laravel-form"
         }
     ],
     "require": {
@@ -31,8 +31,8 @@
         "illuminate/support": "^10.0 || ^11.0",
         "spatie/laravel-package-tools": "^1.16",
         "ralphjsmit/laravel-glide": "^1.2.1",
-        "fuelviews/laravel-form": "dev-main",
-        "fuelviews/laravel-middleware": "dev-main"
+        "fuelviews/laravel-middleware": "dev-main",
+        "fuelviews/laravel-form": "dev-main"
     },
     "require-dev": {
         "laravel/pint": "^1.14",

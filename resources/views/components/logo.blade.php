@@ -6,20 +6,20 @@
             scrolled = window.pageYOffset > window.innerHeight * 0.05;
         });
     ">
-    <a href="{{ route('home') }}" wire:navigate>
+    <a href="{{ route('home') }}">
         <span class="sr-only">
             {{ config('app.name') }}
         </span>
-        @if(config('navigation.logo_swap_enabled') && config('navigation.transparent_nav_background'))
+        @if(Navigation::isLogoSwapEnabled() && Navigation::isTransparentNavBackground())
             <template x-if="!scrolled">
-                <img {{ glide()->src(config('navigation.transparency_logo'), lazy: false) }} loading="eager" class="{{ $attributes->get('logoClass', 'w-24 lg:w-28 h-auto my-auto') }}" alt="{{ $attributes->get('alt', config('app.name')) }}" />
+                <img {{ glide()->src(Navigation::getTransparencyLogo(), lazy: false) }} loading="eager" class="{{ $attributes->get('logoClass', 'w-24 lg:w-28 h-auto my-auto') }}" alt="{{ $attributes->get('alt', config('app.name')) }}" />
             </template>
             <template x-if="scrolled">
-                <img {{ glide()->src(config('navigation.default_logo')) }} loading="eager" class="{{ $attributes->get('logoClass', 'w-24 lg:w-28 h-auto my-auto') }}" alt="{{ $attributes->get('alt', config('app.name')) }}" />
+                <img {{ glide()->src(Navigation::getDefaultLogo()) }} loading="eager" class="{{ $attributes->get('logoClass', 'w-24 lg:w-28 h-auto my-auto') }}" alt="{{ $attributes->get('alt', config('app.name')) }}" />
             </template>
         @else
             <template x-if="true">
-            <img {{ glide()->src(config('navigation.default_logo'), lazy: false) }} loading="eager" class="{{ $attributes->get('logoClass', 'w-24 lg:w-28 h-auto my-auto') }}" alt="{{ $attributes->get('alt', config('app.name')) }}" />
+            <img {{ glide()->src(Navigation::getDefaultLogo(), lazy: false) }} loading="eager" class="{{ $attributes->get('logoClass', 'w-24 lg:w-28 h-auto my-auto') }}" alt="{{ $attributes->get('alt', config('app.name')) }}" />
             </template>
         @endif
     </a>
