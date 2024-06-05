@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v0.0.2 - 2024-06-05
+
+### What's Changed
+
+* Bump anothrNick/github-tag-action from 1.67.0 to 1.69.0 by @dependabot in https://github.com/fuelviews/laravel-navigation/pull/3
+* Bump softprops/action-gh-release from 1 to 2 by @dependabot in https://github.com/fuelviews/laravel-navigation/pull/1
+* Bump dependabot/fetch-metadata from 1.6.0 to 2.1.0 by @dependabot in https://github.com/fuelviews/laravel-navigation/pull/2
+
+### New Contributors
+
+* @dependabot made their first contribution in https://github.com/fuelviews/laravel-navigation/pull/3
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v0.0.1...v0.0.2
+
 ## v0.0.1 - 2024-06-05
 
 **Full Changelog**: https://github.com/fuelviews/laravel-navigation/commits/v0.0.1
