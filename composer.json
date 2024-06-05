@@ -31,8 +31,8 @@
         "illuminate/support": "^10.0 || ^11.0",
         "spatie/laravel-package-tools": "^1.16",
         "ralphjsmit/laravel-glide": "^1.2.1",
-        "fuelviews/laravel-middleware": "dev-main",
-        "fuelviews/laravel-form": "dev-main"
+        "fuelviews/laravel-middleware": "^0.0.1",
+        "fuelviews/laravel-form": "0.0.1"
     },
     "require-dev": {
         "laravel/pint": "^1.14",
