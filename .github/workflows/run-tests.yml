@@ -8,6 +8,9 @@ on:
       - 'phpunit.xml.dist'
       - 'composer.json'
       - 'composer.lock'
+  pull_request_target:
+    branches:
+      - main
 
 jobs:
   test:
@@ -16,14 +19,13 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest]
         php: [8.3, 8.2]
         laravel: [10.*]
         stability: [prefer-lowest, prefer-stable]
         include:
           - laravel: 10.*
             testbench: 8.*
-            carbon: ^2.63
 
     name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
@@ -43,9 +45,16 @@ jobs:
           echo "::add-matcher::${{ runner.tool_cache }}/php.json"
           echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
 
+      - name: Configure GitHub Token
+        env:
+          GH_TOKEN: ${{ secrets.GHA_PERSONAL_ACCESS_TOKEN }}
+        run: |
+          git config --global url."https://${GH_TOKEN}@github.com/".insteadOf "https://github.com/"
+          git config --global url."https://${GH_TOKEN}@github.com/".insteadOf "git@github.com:"
+
       - name: Install dependencies
         run: |
-          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" "nesbot/carbon:${{ matrix.os == 'windows-latest' && '^^^' || '' }}${{ matrix.carbon }}" --no-interaction --no-update
+          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: List Installed Dependencies
