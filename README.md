@@ -54,6 +54,16 @@ php artisan vendor:publish --tag="laravel-navigation-views"
 
 ```
 
+## Tailwindcss classes
+
+Add laravel-form to your tailwind.config.js file.
+
+```javascript
+    content: [
+        './vendor/fuelviews/laravel-navigation/resources/**/*.{js,vue,blade.php}',
+    ]
+```
+
 ## Changelog
 
 Please see [CHANGELOG](../laravel-middleware/CHANGELOG.md) for more information on what has changed recently.
@@ -69,6 +79,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Credits
 
 - [thejmitchener](https://github.com/thejmitchener)
+- - [Fuelviews](https://github.com/fuelviews)
 - [All Contributors](../../contributors)
 
 ## License
