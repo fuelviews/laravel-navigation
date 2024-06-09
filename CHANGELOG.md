@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v0.0.4 - 2024-06-09
+
+### What's Changed
+
+* Refactor Laravel navigation package, update navigation links and configuration, and add new logo image. by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/6
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v0.0.3...v0.0.4
+
 ## v0.0.3 - 2024-06-05
 
 ### What's Changed
