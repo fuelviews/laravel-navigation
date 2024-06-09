@@ -15,13 +15,8 @@ class NavigationServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
         $package
-            ->name('laravel-navigation')
+            ->name('navigation')
             ->hasConfigFile('navigation')
             ->hasViews('navigation')
             ->hasViewComponents('navigation', NavigationScroll::class, TopBar::class);
@@ -32,5 +27,9 @@ class NavigationServiceProvider extends PackageServiceProvider
         Blade::component('navigation::mobile.mobile-navigation', MobileNavigation::class);
         Blade::component('navigation::desktop.desktop-navigation', DesktopNavigation::class);
         Blade::component('navigation::desktop.desktop-dropdown-button', DesktopDropdownButton::class);
+
+        $this->publishes([
+            __DIR__.'/../resources/images' => public_path('images'),
+        ], 'public');
     }
 }

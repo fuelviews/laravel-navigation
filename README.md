@@ -1,11 +1,5 @@
-# This is my package laravel-navigation
+# Laravel navigation package
 
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/fuelviews/laravel-navigation/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/fuelviews/laravel-navigation/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/fuelviews/laravel-navigation/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/fuelviews/laravel-navigation/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
 
 ## Installation
 
@@ -20,38 +14,69 @@ You can publish and run the migrations with:
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="navigation-config"
+php artisan vendor:publish --tag="-config"
 ```
 
 This is the contents of the published config file:
 
 ```php
+
 return [
+
+    // navigation links config
     'navigation' => [
-        // Define your navigation items here
-        ['route' => 'home', 'label' => 'Home', 'position' => 1],
-        ['route' => 'about', 'label' => 'About', 'position' => 2],
-        // Add more items as needed
+
+        // single link
+        [
+            'type' => 'link',
+            'position' => 0,
+            'name' => 'Welcome',
+            'route' => 'welcome',
+        ],
+
+        // dropdown link
+        [
+            'type' => 'dropdown',
+            'position' => 1,
+            'name' => 'Welcome',
+            'links' => [
+                [
+                    'name' => 'Welcome',
+                    'route' => 'welcome',
+                ],
+                [
+                    'name' => 'Welcome',
+                    'route' => 'welcome',
+                ]
+            ],
+        ],
     ],
-    'default_logo' => 'path/to/default/logo.png',
-    'transparency_logo' => 'path/to/transparency/logo.png',
-    'phone' => '1-800-123-4567',
-    'top_nav_enabled' => true,
+
+    // logo config
+    'default_logo' => 'images/logo.png',
+    'transparency_logo' => 'images/logo.png',
+
+    // phone config
+    'phone' => '(666) 420-6969',
+
+    // navigation config
+    'top_nav_enabled' => false,
     'logo_swap_enabled' => true,
     'transparent_nav_background' => true,
 ];
+
 ```
 
 Optionally, you can publish the views using
 
 ```bash
-php artisan vendor:publish --tag="laravel-navigation-views"
+php artisan vendor:publish --tag="navigation-views"
 ```
 
 ## Usage
 
 ```php
-
+<x-navigation::navigation />
 ```
 
 ## Tailwindcss classes
@@ -78,8 +103,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [thejmitchener](https://github.com/thejmitchener)
-- - [Fuelviews](https://github.com/fuelviews)
+- [Thejmitchener](https://github.com/thejmitchener)
+- [Fuelviews](https://github.com/fuelviews)
 - [All Contributors](../../contributors)
 
 ## License
