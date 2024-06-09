@@ -14,7 +14,7 @@ You can publish and run the migrations with:
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="-config"
+php artisan vendor:publish --tag="navigation-config"
 ```
 
 This is the contents of the published config file:
@@ -91,7 +91,7 @@ Add laravel-form to your tailwind.config.js file.
 
 ## Changelog
 
-Please see [CHANGELOG](../laravel-middleware/CHANGELOG.md) for more information on what has changed recently.
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
 ## Contributing
 
