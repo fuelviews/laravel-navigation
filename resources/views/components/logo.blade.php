@@ -6,11 +6,7 @@
             scrolled = window.pageYOffset > window.innerHeight * 0.05;
         });
     ">
-    @if (Route::has('home'))
-        <a href="{{ route('home') }}">Home</a>
-    @else
-        <a href="">Home</a>
-    @endif
+    <a href="{{ config('app.url') }}">
         <span class="sr-only">
             {{ config('app.name') }}
         </span>
