@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v0.0.5 - 2024-06-10
+
+### What's Changed
+
+* Refactored logo.blade.php to include a conditional statement for the … by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/7
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v0.0.4...v0.0.5
+
 ## v0.0.4 - 2024-06-09
 
 ### What's Changed
