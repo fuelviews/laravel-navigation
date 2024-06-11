@@ -20,7 +20,6 @@ php artisan vendor:publish --tag="navigation-config"
 This is the contents of the published config file:
 
 ```php
-
 return [
 
     // navigation links config
@@ -64,10 +63,15 @@ return [
     'logo_swap_enabled' => true,
     'transparent_nav_background' => true,
 ];
-
 ```
 
-Optionally, you can publish the views using
+Optionally, you can publish the default logo using:
+
+```bash
+php artisan vendor:publish --tag="navigation-logo"
+```
+
+Optionally, you can publish the views using:
 
 ```bash
 php artisan vendor:publish --tag="navigation-views"
@@ -81,7 +85,7 @@ php artisan vendor:publish --tag="navigation-views"
 
 ## Tailwindcss classes
 
-Add laravel-form to your tailwind.config.js file.
+Add laravel-form to your tailwind.config.js file:
 
 ```javascript
     content: [
