@@ -2,6 +2,7 @@
 
 namespace Fuelviews\Navigation;
 
+use Fuelviews\Navigation\Commands\NavigationInstallCommand;
 use Fuelviews\Navigation\View\Components\Desktop\DesktopDropdownButton;
 use Fuelviews\Navigation\View\Components\Desktop\DesktopNavigation;
 use Fuelviews\Navigation\View\Components\Mobile\MobileNavigation;
@@ -19,7 +20,8 @@ class NavigationServiceProvider extends PackageServiceProvider
             ->name('navigation')
             ->hasConfigFile('navigation')
             ->hasViews('navigation')
-            ->hasViewComponents('navigation', NavigationScroll::class, TopBar::class);
+            ->hasViewComponents('navigation', NavigationScroll::class, TopBar::class)
+            ->hasCommand(NavigationInstallCommand::class);
     }
 
     public function bootingPackage(): void
