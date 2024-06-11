@@ -16,10 +16,11 @@ class NavigationInstallCommand extends Command
     {
         parent::__construct();
     }
+
     public function handle()
     {
         $packages = [
-            'ralphjsmit/laravel-glide' => '^1.2'
+            'ralphjsmit/laravel-glide' => '^1.2',
         ];
 
         $requireCommand = 'composer require';
