@@ -28,8 +28,9 @@ class NavigationServiceProvider extends PackageServiceProvider
         Blade::component('navigation::desktop.desktop-navigation', DesktopNavigation::class);
         Blade::component('navigation::desktop.desktop-dropdown-button', DesktopDropdownButton::class);
 
+        $sourcePath = __DIR__ . '/../public/images';
         $this->publishes([
-            __DIR__.'/../resources/images' => public_path('images'),
-        ], 'public');
+            $sourcePath => public_path('images'),
+        ], 'navigation-logo');
     }
 }
