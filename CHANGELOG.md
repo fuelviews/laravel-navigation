@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v0.0.7 - 2024-06-11
+
+### What's Changed
+
+* Update dep locking, package structure, and readme by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/9
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v0.0.6...v0.0.7
+
 ## v0.0.6 - 2024-06-10
 
 ### What's Changed
