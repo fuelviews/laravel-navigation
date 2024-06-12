@@ -3,6 +3,7 @@
 namespace Fuelviews\Navigation\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
@@ -32,6 +33,18 @@ class NavigationInstallCommand extends Command
 
         $this->runShellCommand($requireCommand);
 
+        $filePath = base_path('routes/web.php');
+        $search = "Route::get('/', function () {\n    return view('welcome');\n});";
+        $replace = "Route::get('/', function () {\n    return view('welcome');\n})->name('welcome');";
+
+        $fileContents = File::get($filePath);
+
+        $updatedContents = str_replace($search, $replace, $fileContents);
+
+        File::put($filePath, $updatedContents);
+
+        $this->info('Route updated successfully.');
+
         $this->info('Packages installed successfully.');
     }
 
@@ -39,10 +52,8 @@ class NavigationInstallCommand extends Command
     {
         $process = Process::fromShellCommandline($command);
 
-        // Set the input to the process's standard input, allowing for interaction
         $process->setTty(Process::isTtySupported());
 
-        // Run the process
         $process->run(function ($type, $buffer) {
             $this->output->write($buffer);
         });
