@@ -85,7 +85,7 @@ php artisan vendor:publish --tag="navigation-views"
 
 ## Tailwindcss classes
 
-Add laravel-form to your tailwind.config.js file:
+Add laravel-forms to your tailwind.config.js file:
 
 ```javascript
     content: [
