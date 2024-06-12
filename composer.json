@@ -15,12 +15,6 @@
             "role": "Developer"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@github.com:fuelviews/laravel-forms.git"
-        }
-    ],
     "require": {
         "php": "^8.2",
         "spatie/laravel-package-tools": "^1.16"
@@ -33,7 +27,7 @@
         "pestphp/pest-plugin-arch": "^2.7",
         "pestphp/pest-plugin-laravel": "^2.3",
         "ralphjsmit/laravel-glide": "^1.2.1",
-        "fuelviews/laravel-forms": "^0.0"
+        "livewire/livewire": "^3.5"
     },
     "autoload": {
         "psr-4": {
