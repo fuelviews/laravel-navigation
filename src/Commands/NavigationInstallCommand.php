@@ -5,6 +5,7 @@ namespace Fuelviews\Navigation\Commands;
 use Illuminate\Console\Command;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
+use Illuminate\Support\Facades\File;
 
 class NavigationInstallCommand extends Command
 {
@@ -36,19 +37,13 @@ class NavigationInstallCommand extends Command
         $search = "Route::get('/', function () {\n    return view('welcome');\n});";
         $replace = "Route::get('/', function () {\n    return view('welcome');\n})->name('welcome');";
 
-        if (file_exists($filePath)) {
-            $fileContents = file_get_contents($filePath);
+        $fileContents = File::get($filePath);
 
-            if (strpos($fileContents, $search) !== false) {
-                $fileContents = str_replace($search, $replace, $fileContents);
-                file_put_contents($filePath, $fileContents);
-                $this->info('Route updated successfully.');
-            } else {
-                $this->info('The specified route was not found in the file.');
-            }
-        } else {
-            $this->error('The web.php file does not exist.');
-        }
+        $updatedContents = str_replace($search, $replace, $fileContents);
+
+        File::put($filePath, $updatedContents);
+
+        $this->info('Route updated successfully.');
 
         $this->info('Packages installed successfully.');
     }
