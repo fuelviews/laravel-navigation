@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v0.0.10 - 2024-06-12
+
+### What's Changed
+
+* Added functionality to update a specific route in the web.php file if it exists. This change was made to ensure that the specified route is updated correctly during the installation process. by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/12
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v0.0.9...v0.0.10
+
 ## v0.0.9 - 2024-06-12
 
 ### What's Changed
