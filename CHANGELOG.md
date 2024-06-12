@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v0.0.8 - 2024-06-12
+
+### What's Changed
+
+* Decouple deps add install command by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/10
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v0.0.7...v0.0.8
+
 ## v0.0.7 - 2024-06-11
 
 ### What's Changed
