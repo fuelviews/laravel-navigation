@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v0.0.9 - 2024-06-12
+
+### What's Changed
+
+* Update tailwind.config.js and composer.json to include the laravel-forms package. by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/11
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v0.0.8...v0.0.9
+
 ## v0.0.8 - 2024-06-12
 
 ### What's Changed
