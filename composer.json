@@ -32,7 +32,9 @@
         "pestphp/pest": "^2.34",
         "pestphp/pest-plugin-arch": "^2.7",
         "pestphp/pest-plugin-laravel": "^2.3",
-        "ralphjsmit/laravel-glide": "^1.2.1"
+        "ralphjsmit/laravel-glide": "^1.2.1",
+        "fuelviews/laravel-forms": "^3.5",
+        "livewire/livewire": "^3.5"
     },
     "autoload": {
         "psr-4": {
