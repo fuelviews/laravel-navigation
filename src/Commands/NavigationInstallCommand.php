@@ -32,6 +32,24 @@ class NavigationInstallCommand extends Command
 
         $this->runShellCommand($requireCommand);
 
+        $filePath = base_path('routes/web.php');
+        $search = "Route::get('/', function () {\n    return view('welcome');\n});";
+        $replace = "Route::get('/', function () {\n    return view('welcome');\n})->name('welcome');";
+
+        if (file_exists($filePath)) {
+            $fileContents = file_get_contents($filePath);
+
+            if (strpos($fileContents, $search) !== false) {
+                $fileContents = str_replace($search, $replace, $fileContents);
+                file_put_contents($filePath, $fileContents);
+                $this->info('Route updated successfully.');
+            } else {
+                $this->info('The specified route was not found in the file.');
+            }
+        } else {
+            $this->error('The web.php file does not exist.');
+        }
+
         $this->info('Packages installed successfully.');
     }
 
