@@ -52,10 +52,8 @@ class NavigationInstallCommand extends Command
     {
         $process = Process::fromShellCommandline($command);
 
-        // Set the input to the process's standard input, allowing for interaction
         $process->setTty(Process::isTtySupported());
 
-        // Run the process
         $process->run(function ($type, $buffer) {
             $this->output->write($buffer);
         });
