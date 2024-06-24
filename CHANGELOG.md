@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v0.0.11 - 2024-06-24
+
+### What's Changed
+
+* Added a new spacer component to the navigation package, allowing for the insertion of a spacer element in the navigation. by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/13
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v0.0.10...v0.0.11
+
 ## v0.0.10 - 2024-06-12
 
 ### What's Changed
