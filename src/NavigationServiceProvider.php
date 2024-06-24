@@ -34,7 +34,7 @@ class NavigationServiceProvider extends PackageServiceProvider
 
         $sourcePath = __DIR__.'/../resources/views/components/spacer.blade.php';
         $this->publishes([
-            $sourcePath=> resource_path('views/vendor/navigation/components/spacer.blade.php'),
+            $sourcePath => resource_path('views/vendor/navigation/components/spacer.blade.php'),
         ], 'navigation-spacer');
 
         $sourcePath2 = __DIR__.'/../public/images';
