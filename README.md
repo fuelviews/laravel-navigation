@@ -77,10 +77,17 @@ Optionally, you can publish the views using:
 php artisan vendor:publish --tag="navigation-views"
 ```
 
+Optionally, you can publish the spacer view using:
+
+```bash
+php artisan vendor:publish --tag="navigation-spacer"
+```
+
 ## Usage
 
 ```php
 <x-navigation::navigation />
+<x-navigation::spacer />
 ```
 
 ## Tailwindcss classes
