@@ -1,10 +1,19 @@
-<nav x-data="{ open: false, scrolled: false, showEstimate: false, isMobile: window.innerWidth < 640, transparentNav: {{ config('navigation.transparent_nav_background') ? 'true' : 'false' }} }"
+<nav x-data="{
+        open: false,
+        dropdownOpen: false,
+        scrolled: {{ Navigation::getPreScrolledRoute() }},
+        showEstimate: false,
+        isMobile: window.innerWidth < 640,
+        transparentNav: {{  Navigation::isTransparentNavBackground() ? 'true' : 'false' }}
+    }"
      x-init="
         if (transparentNav) {
-            scrolled = (window.scrollY > window.innerHeight * 0.05);
+            scrolled = (window.scrollY > window.innerHeight * 0.05) || {{ Navigation::getPreScrolledRoute() }};
             showEstimate = (window.scrollY > window.innerHeight * 0.25);
             window.addEventListener('scroll', () => {
-                scrolled = (window.scrollY > window.innerHeight * 0.05);
+                if (!{{ Navigation::getPreScrolledRoute() }}) {
+                    scrolled = (window.scrollY > window.innerHeight * 0.05);
+                }
                 showEstimate = (window.scrollY > window.innerHeight * 0.25);
             });
         }
@@ -14,10 +23,10 @@
         });
      "
      :class="{
-         'bg-white text-gray-700': scrolled && transparentNav,
-         '{{ Navigation::isTransparentNavBackground() ? 'bg-transparent text-white' : 'bg-white text-gray-700' }}': !scrolled || !transparentNav
+         'bg-white text-gray-700': scrolled || {{ Navigation::getPreScrolledRoute() }},
+         '{{ Navigation::isTransparentNavBackground() ? 'bg-transparent text-white' : 'bg-white text-gray-700' }}': !scrolled && !{{ Navigation::getPreScrolledRoute() }}
      }"
-     class="bg-white duration-600 fixed inset-x-0 top-0 z-40 drop-shadow-2xl transition-all"
+     class="duration-600 fixed inset-x-0 top-0 z-40 drop-shadow-2xl transition-all"
      x-cloak
      x-transition>
 
