@@ -31,12 +31,17 @@ return [
         ],
     ],
 
+    // pre scrolled routes
+    'pre_scrolled_routes' => [
+        // 'welcome',
+    ],
+
+    // phone config
+    'phone' => config('businessinfo.phone') ?: '(666) 666-6666',
+
     // logo config
     'default_logo' => 'images/logo.png',
     'transparency_logo' => 'images/logo.png',
-
-    // phone config
-    'phone' => '(666) 420-6969',
 
     // navigation config
     'top_nav_enabled' => false,
