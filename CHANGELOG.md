@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v0.0.12 - 2024-07-16
+
+### What's Changed
+
+* Add laravel-forms to tailwind.config.js file, update phone config, update classes in blade files, update logo images, update navigation scroll behavior, update phone button behavior, add pre scrolled routes. by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/15
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v0.0.11...v0.0.12
+
 ## v0.0.11 - 2024-06-24
 
 ### What's Changed
