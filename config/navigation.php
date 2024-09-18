@@ -31,9 +31,11 @@ return [
         ],
     ],
 
-    // pre scrolled routes
+    // scrolled routes
     'pre_scrolled_routes' => [
-        // 'welcome',
+        'careers',
+        'contact',
+        'forms.thank-you',
     ],
 
     // phone config
