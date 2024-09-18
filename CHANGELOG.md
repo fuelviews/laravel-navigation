@@ -2,6 +2,17 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v0.0.13 - 2024-09-18
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/fuelviews/laravel-navigation/pull/17
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot in https://github.com/fuelviews/laravel-navigation/pull/18
+* Bump anothrNick/github-tag-action from 1.69.0 to 1.70.0 by @dependabot in https://github.com/fuelviews/laravel-navigation/pull/16
+* Refactored logo component and navigation configuration, added pre-scrolled routes, fix logo bug, and publish logo view. by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/19
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v0.0.12...v0.0.13
+
 ## v0.0.12 - 2024-07-16
 
 ### What's Changed
