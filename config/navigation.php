@@ -35,7 +35,7 @@ return [
     'pre_scrolled_routes' => [
         'careers',
         'contact',
-        'forms.thank-you'
+        'forms.thank-you',
     ],
 
     // phone config
