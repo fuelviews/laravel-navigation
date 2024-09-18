@@ -46,17 +46,24 @@ return [
                 [
                     'name' => 'Welcome',
                     'route' => 'welcome',
-                ]
+                ],
             ],
         ],
     ],
 
+    // scrolled routes
+    'pre_scrolled_routes' => [
+        'careers',
+        'contact',
+        'forms.thank-you'
+    ],
+
+    // phone config
+    'phone' => config('businessinfo.phone') ?: '(666) 666-6666',
+
     // logo config
     'default_logo' => 'images/logo.png',
     'transparency_logo' => 'images/logo.png',
-
-    // phone config
-    'phone' => '(666) 420-6969',
 
     // navigation config
     'top_nav_enabled' => false,
@@ -65,7 +72,13 @@ return [
 ];
 ```
 
-Optionally, you can publish the default logo using:
+Optionally, you can publish the sample logo file using:
+
+```bash
+php artisan vendor:publish --tag="navigation-logo-png"
+```
+
+Optionally, you can publish the logo view using:
 
 ```bash
 php artisan vendor:publish --tag="navigation-logo"
