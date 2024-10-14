@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v0.0.14 - 2024-10-14
+
+### What's Changed
+
+* Add footer and social by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/21
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v0.0.13...v0.0.14
+
 ## v0.0.13 - 2024-09-18
 
 ### What's Changed
