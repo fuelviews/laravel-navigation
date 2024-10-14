@@ -49,4 +49,7 @@ return [
     'top_nav_enabled' => false,
     'logo_swap_enabled' => true,
     'transparent_nav_background' => true,
+
+    //footer stuff, needs to be moved to navigation config
+    'logo_shape' => 'horizontal', // Can be 'horizontal', 'vertical', or 'square'
 ];

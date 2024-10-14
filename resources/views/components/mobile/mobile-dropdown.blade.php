@@ -7,10 +7,11 @@
 @endphp
 
 <div x-data="{ dropdownOpen: false }" class="relative w-full">
-    <a @click="dropdownOpen = !dropdownOpen" @click.outside="dropdownOpen = false; manualToggle = false" class="w-full text-left flex items-center justify-start cursor-pointer">
+    <a @click="dropdownOpen = !dropdownOpen" @click.outside="dropdownOpen = false; manualToggle = false"
+       class="w-full text-left flex items-center justify-start cursor-pointer">
         <button {{ $attributes->merge(['class' => $classes]) }}>
             {{ $name }}
-            <x-navigation::dropdown-icon />
+            <x-navigation::dropdown-icon/>
         </button>
     </a>
 
