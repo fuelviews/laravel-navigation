@@ -38,12 +38,14 @@
                     </div>
 
                     <div class="mx-auto flex justify-center gap-x-9 pt-16 lg:pt-8">
-                        <x-navigation::social.youtube :socialMedia="$socialMedia['youtube']" />
-                        <x-navigation::social.facebook :socialMedia="$socialMedia['facebook']" />
-                        <x-navigation::social.instagram :socialMedia="$socialMedia['instagram']" />
-                        <x-navigation::social.xitter :socialMedia="$socialMedia['xitter']" />
-                        <x-navigation::social.linkedin :socialMedia="$socialMedia['linkedin']" />
-                        <x-navigation::social.tiktok :socialMedia="$socialMedia['tiktok']" />
+                        @isset($socialMedia)
+                            <x-navigation::social.youtube :socialMedia="$socialMedia['youtube']" />
+                            <x-navigation::social.facebook :socialMedia="$socialMedia['facebook']" />
+                            <x-navigation::social.instagram :socialMedia="$socialMedia['instagram']" />
+                            <x-navigation::social.xitter :socialMedia="$socialMedia['xitter']" />
+                            <x-navigation::social.linkedin :socialMedia="$socialMedia['linkedin']" />
+                            <x-navigation::social.tiktok :socialMedia="$socialMedia['tiktok']" />
+                        @endisset
                     </div>
                 </div>
 
@@ -105,30 +107,37 @@
                             <span>&middot;</span>
                         </span>
 
-                        <a class="inline-block text-legal-link underline transition hover:text-legal-link/75"
-                           href="{{ route('terms-and-conditions') }}"
-                           title="Terms & Conditions"
-                        >
-                            Terms & Conditions
-                        </a>
+                        @if(Route::is('terms-and-conditions'))
+                            <a class="inline-block text-legal-link underline transition hover:text-legal-link/75"
+                               href="{{ route('terms-and-conditions') }}"
+                               title="Terms & Conditions"
+                            >
+                                Terms & Conditions
+                            </a>
 
-                        <span>&middot;</span>
+                            <span>&middot;</span>
+                        @endif
 
-                        <a class="inline-block text-legal-link underline transition hover:text-legal-link/75"
-                           href="{{ route('privacy-policy') }}"
-                           title="Privacy Policy"
-                        >
-                            Privacy Policy
-                        </a>
+                        @if(Route::is('privacy-policy'))
+                            <a class="inline-block text-legal-link underline transition hover:text-legal-link/75"
+                               href="{{ route('privacy-policy') }}"
+                               title="Privacy Policy"
+                            >
+                                Privacy Policy
+                            </a>
 
-                        <span>&middot;</span>
+                            <span>&middot;</span>
+                        @endif
 
-                        <a class="inline-block text-legal-link underline transition hover:text-legal-link/75"
-                           href="{{ route('sitemap') }}"
-                           title="Sitemap"
-                        >
-                            Sitemap
-                        </a>
+
+                        @if(Route::is('sitemap'))
+                            <a class="inline-block text-legal-link underline transition hover:text-legal-link/75"
+                               href="{{ route('sitemap') }}"
+                               title="Sitemap"
+                            >
+                                Sitemap
+                            </a>
+                        @endif
                     </p>
 
                     <p class="mt-4 text-sm sm:order-first sm:mt-0">
