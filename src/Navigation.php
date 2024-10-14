@@ -6,12 +6,12 @@ use Illuminate\Support\Facades\Route;
 
 class Navigation
 {
-    public function getNavigationItems()
+    public function getNavigationItems(): \Illuminate\Support\Collection
     {
         return collect(config('navigation.navigation'))->sortBy('position')->values();
     }
 
-    public function isDropdownRouteActive($links)
+    public function isDropdownRouteActive($links): bool
     {
         return collect($links)->contains(fn ($link) => request()->routeIs($link['route']));
 
@@ -20,6 +20,11 @@ class Navigation
     public function getDefaultLogo()
     {
         return config('navigation.default_logo');
+    }
+
+    public function getLogoShape()
+    {
+        return config('navigation.logo_shape');
     }
 
     public function getTransparencyLogo()

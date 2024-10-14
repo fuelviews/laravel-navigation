@@ -90,6 +90,12 @@ Optionally, you can publish the views using:
 php artisan vendor:publish --tag="navigation-views"
 ```
 
+Optionally, you can publish the footer views using:
+
+```bash
+php artisan vendor:publish --tag="navigation-footer-views"
+```
+
 Optionally, you can publish the spacer view using:
 
 ```bash
