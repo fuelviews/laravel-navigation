@@ -1,39 +1,37 @@
+@php
+    /* social media accounts */
+    if (config('businessinfo.social_media') !== null) {
+        $socialMedia = config('businessinfo.social_media');
+    }
+
+    $logoShape = Navigation::getLogoShape();
+    $logoClasses = '';
+    if ($logoShape === 'horizontal') {
+        $logoClasses = 'mx-auto w-64 lg:w-72';
+    } elseif ($logoShape === 'vertical') {
+        $logoClasses = 'mx-auto w-32 lg:w-48';
+    } elseif ($logoShape === 'square') {
+        $logoClasses = 'mx-auto w-48 lg:w-64';
+    }
+@endphp
+
 <div>
-    @php
-        /* social media accounts */
-        if (config('businessinfo.social_media') !== null) {
-            $socialMedia = config('businessinfo.social_media');
-        }
-
-        $logoShape = Navigation::getLogoShape();
-        $logoClasses = '';
-        if ($logoShape === 'horizontal') {
-            $logoClasses = 'mx-auto w-64 lg:w-72';
-        } elseif ($logoShape === 'vertical') {
-            $logoClasses = 'mx-auto w-32 lg:w-48';
-        } elseif ($logoShape === 'square') {
-            $logoClasses = 'mx-auto w-48 lg:w-64';
-        }
-    @endphp
-
     <footer class="bg-footer-back">
         <!-- this is important -->
         <div class="mx-auto max-w-waistline px-4 pb-6 pt-16 sm:px-6 lg:px-3 lg:pt-24">
             <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
                 <div>
                     <div class="flex justify-start text-footer-type">
-                        @if (Navigation::isLogoSwapEnabled() && Navigation::isTransparentNavBackground())
+                        @if (Navigation::getDefaultLogo() && Navigation::isLogoSwapEnabled() && Navigation::isTransparentNavBackground())
                             <img
                                     {{ glide()->src(Navigation::getTransparencyLogo()) }}
                                     class="{{ $logoClasses }}"
                                     alt="{{ config('app.name') }}"
                             />
                         @else
-                            <img
-                                    {{ glide()->src(Navigation::getDefaultLogo()) }}
-                                    class="{{ $logoClasses }}"
-                                    alt="{{ config('app.name') }}"
-                            />
+                            <div class="{{ $logoClasses }}">
+                                <x-navigation::social.rocketman />
+                            </div>
                         @endif
                     </div>
 
