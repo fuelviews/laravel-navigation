@@ -62,8 +62,8 @@ return [
     'phone' => config('businessinfo.phone') ?: '(666) 666-6666',
 
     // logo config
-    'default_logo' => 'images/logo.png',
-    'transparency_logo' => 'images/logo.png',
+    'transparency_logo' => '',
+        'default_logo' => '',
 
     // navigation config
     'top_nav_enabled' => false,
@@ -72,34 +72,11 @@ return [
 ];
 ```
 
-Optionally, you can publish the sample logo file using:
-
-```bash
-php artisan vendor:publish --tag="navigation-logo-png"
-```
-
-Optionally, you can publish the logo view using:
-
-```bash
-php artisan vendor:publish --tag="navigation-logo"
-```
-
 Optionally, you can publish the views using:
 
 ```bash
 php artisan vendor:publish --tag="navigation-views"
 ```
-
-Optionally, you can publish the footer views using:
-
-```bash
-php artisan vendor:publish --tag="navigation-footer-views"
-```
-
-Optionally, you can publish the spacer view using:
-
-```bash
-php artisan vendor:publish --tag="navigation-spacer"
 ```
 
 ## Usage
