@@ -42,14 +42,14 @@ return [
     'phone' => config('businessinfo.phone') ?: '(666) 666-6666',
 
     // logo config
-    'default_logo' => 'images/logo.png',
-    'transparency_logo' => 'images/logo.png',
+    'transparency_logo' => '',
+    'default_logo' => '',
 
     // navigation config
     'top_nav_enabled' => false,
     'logo_swap_enabled' => true,
     'transparent_nav_background' => true,
 
-    //footer stuff, needs to be moved to navigation config
-    'logo_shape' => 'horizontal', // Can be 'horizontal', 'vertical', or 'square'
+    // footer stuff, needs to be moved to navigation config
+    'logo_shape' => 'vertical', // Can be 'horizontal', 'vertical', or 'square'
 ];

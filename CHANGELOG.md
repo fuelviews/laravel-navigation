@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v0.0.15 - 2024-10-27
+
+### What's Changed
+
+* Refactored logo and footer components, removed unnecessary files, and updated the NavigationServiceProvider. by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/23
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v0.0.14...v0.0.15
+
 ## v0.0.14 - 2024-10-14
 
 ### What's Changed
