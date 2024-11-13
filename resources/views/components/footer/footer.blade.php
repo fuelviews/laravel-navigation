@@ -24,9 +24,9 @@
                     <div class="flex justify-start text-footer-type">
                         @if (Navigation::getDefaultLogo() && Navigation::isLogoSwapEnabled() && Navigation::isTransparentNavBackground())
                             <img
-                                    {{ glide()->src(Navigation::getTransparencyLogo()) }}
-                                    class="{{ $logoClasses }}"
-                                    alt="{{ config('app.name') }}"
+                                {{ glide()->src(Navigation::getTransparencyLogo()) }}
+                                class="{{ $logoClasses }}"
+                                alt="{{ config('app.name') }}"
                             />
                         @else
                             <div class="{{ $logoClasses }}">
@@ -37,12 +37,24 @@
 
                     <div class="mx-auto flex justify-center gap-x-9 pt-16 lg:pt-8">
                         @isset($socialMedia)
+                            @isset($socialMedia['youtube'])
                             <x-navigation::social.youtube :socialMedia="$socialMedia['youtube']" />
+                            @endisset
+                            @isset($socialMedia['facebook'])
                             <x-navigation::social.facebook :socialMedia="$socialMedia['facebook']" />
+                            @endisset
+                            @isset($socialMedia['instagram'])
                             <x-navigation::social.instagram :socialMedia="$socialMedia['instagram']" />
+                            @endisset
+                            @isset($socialMedia['xitter'])
                             <x-navigation::social.xitter :socialMedia="$socialMedia['xitter']" />
+                            @endisset
+                            @isset($socialMedia['linkedin'])
                             <x-navigation::social.linkedin :socialMedia="$socialMedia['linkedin']" />
+                            @endisset
+                            @isset($socialMedia['tiktok'])
                             <x-navigation::social.tiktok :socialMedia="$socialMedia['tiktok']" />
+                            @endisset
                         @endisset
                     </div>
                 </div>
@@ -102,10 +114,10 @@
                     <p class="text-sm text-legal-type">
                         <span class="block sm:inline text-gray-400/75">
                             All rights reserved
-                            <span>&middot;</span>
+                            <span>.</span>
                         </span>
 
-                        @if(Route::is('terms-and-conditions'))
+                        @if(Route::has('terms-and-conditions'))
                             <a class="inline-block text-legal-link underline transition hover:text-legal-link/75"
                                href="{{ route('terms-and-conditions') }}"
                                title="Terms & Conditions"
@@ -116,7 +128,7 @@
                             <span>&middot;</span>
                         @endif
 
-                        @if(Route::is('privacy-policy'))
+                        @if(Route::has('privacy-policy'))
                             <a class="inline-block text-legal-link underline transition hover:text-legal-link/75"
                                href="{{ route('privacy-policy') }}"
                                title="Privacy Policy"
@@ -128,7 +140,7 @@
                         @endif
 
 
-                        @if(Route::is('sitemap'))
+                        @if(Route::has('sitemap'))
                             <a class="inline-block text-legal-link underline transition hover:text-legal-link/75"
                                href="{{ route('sitemap') }}"
                                title="Sitemap"
