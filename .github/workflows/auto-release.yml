@@ -1,0 +1,50 @@
+name: Auto Tag and Release
+
+on:
+  workflow_dispatch:
+
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+    paths-ignore:
+      - '.github/**'
+
+jobs:
+  release:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Get Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v4
+        with:
+          application_id: ${{ vars.FUELVIEWS_BOT_APP_ID}}
+          application_private_key: ${{ secrets.FUELVIEWS_BOT_APP_PRIVATE_KEY }}
+
+      - uses: actions/checkout@v4
+        with:
+          ref: 'main'
+          fetch-depth: '0'
+
+      - name: Bump version and push tag
+        id: bump_version
+        uses: anothrNick/github-tag-action@1.71.0
+        env:
+          GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
+          DEFAULT_BUMP: patch
+          WITH_V: true
+          RELEASE_BRANCHES: main
+
+      - name: Release
+        id: release
+        uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
+        with:
+          tag_name: ${{ steps.bump_version.outputs.new_tag }}
+          generate_release_notes: true
+
