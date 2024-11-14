@@ -23,8 +23,8 @@
         });
      "
      :class="{
-         'bg-white text-gray-700': scrolled || {{ Navigation::getPreScrolledRoute() }},
-         '{{ Navigation::isTransparentNavBackground() ? 'bg-transparent text-white' : 'bg-white text-gray-700' }}': !scrolled && !{{ Navigation::getPreScrolledRoute() }}
+         'bg-nav text-nav-type': scrolled || {{ Navigation::getPreScrolledRoute() }},
+         '{{ Navigation::isTransparentNavBackground() ? 'bg-transparent text-nav-type-trans' : 'bg-nav text-nav-type' }}': !scrolled && !{{ Navigation::getPreScrolledRoute() }}
      }"
      class="duration-600 fixed inset-x-0 top-0 z-40 drop-shadow-2xl transition-all"
      x-cloak
