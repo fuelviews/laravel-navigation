@@ -1,0 +1,45 @@
+name: Update Changelog
+
+on:
+  workflow_dispatch:
+
+  release:
+    types: [released]
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Get Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v4
+        with:
+          application_id: ${{ vars.FUELVIEWS_BOT_APP_ID}}
+          application_private_key: ${{ secrets.FUELVIEWS_BOT_APP_PRIVATE_KEY }}
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.target_commitish }}
+          token: ${{ steps.get_workflow_token.outputs.token }}
+
+      - name: Update Changelog
+        uses: stefanzweifel/changelog-updater-action@v1
+        with:
+          latest-version: ${{ github.event.release.name }}
+          release-notes: ${{ github.event.release.body }}
+
+      - name: Amend latest commit with updated CHANGELOG
+        run: |
+          git config user.name "fuelviews-app[bot]"
+          git config user.email "fuelviews-app[bot]@users.noreply.github.com"
+          git add CHANGELOG.md
+          git commit --amend --no-edit
+          git push origin main --force-with-lease
+        env:
+          GITHUB_TOKEN: ${{ steps.get_workflow_token.outputs.token }}
