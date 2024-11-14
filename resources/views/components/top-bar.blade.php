@@ -23,5 +23,4 @@
             Top navbar
         </div>
     </div>
-
 @endif
