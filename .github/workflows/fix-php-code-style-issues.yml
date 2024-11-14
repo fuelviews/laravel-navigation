@@ -1,12 +1,11 @@
 name: Fix PHP Code Style Issues
 
 on:
-  push:
-    branches-ignore:
+  workflow_dispatch:
+
+  pull_request:
+    branches:
       - main
-      - development
-    paths:
-      - '**.php'
 
 permissions:
   contents: write
