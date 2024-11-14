@@ -1,6 +1,6 @@
 {
     "name": "fuelviews/laravel-navigation",
-    "description": "Fuelviews laravel navigation package",
+    "description": "Laravel Navigation Package",
     "keywords": [
         "Fuelviews",
         "laravel",
@@ -13,12 +13,6 @@
             "name": "thejmitchener",
             "email": "support@fuelviews.com",
             "role": "Developer"
-        }
-    ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "git@github.com:fuelviews/laravel-forms.git"
         }
     ],
     "require": {
