@@ -77,30 +77,57 @@
                 </div>
             </div>
 
-            <div
-                    class="flex flex-col justify-center md:flex-row md:justify-between md:flex-wrap py-6 md:py-12 text-footer-type gap-8">
+            <div class="flex flex-col justify-center md:flex-row md:justify-between md:flex-wrap py-6 md:py-12 text-footer-type gap-8">
                 <!-- Column 1: Menu (Non-Dropdown Links) -->
                 <div class="flex flex-col items-center md:items-start">
-                    <p class="font-bold text-xl mt-8 mb-4 md:my-4 pb-2 border-b border-gray-400/75">{{ __('Menu') }}</p>
-                    @foreach (Navigation::getNavigationItems() as $item)
+                    <p class="font-bold text-xl mt-8 mb-4 md:my-4 pb-2 border-b border-gray-400/75">
+                        {{ __('Menu') }}
+                    </p>
+                    @foreach (Navigation::getCombinedNavigationItems() as $item)
                         @if ($item['type'] === 'link')
                             <!-- Non-Dropdown Links -->
-                            <x-navigation::footer.footer-navigation-link :href="route($item['route'])"
-                                                                         :active="request()->routeIs($item['route'])">
+                            <x-navigation::footer.footer-navigation-link
+                                :href="route($item['route'])"
+                                :active="request()->routeIs($item['route'])"
+                            >
                                 {{ __($item['name']) }}
                             </x-navigation::footer.footer-navigation-link>
                         @endif
                     @endforeach
                 </div>
 
-                @foreach (Navigation::getNavigationItems() as $item)
-                    <!-- Render Dropdowns (e.g., Locations, Services) -->
+                <!-- Other columns: handle BOTH dropdown and dropdown-blog -->
+                @foreach (Navigation::getCombinedNavigationItems() as $item)
                     @if ($item['type'] === 'dropdown')
                         <div class="flex flex-col items-center md:items-start">
-                            <p class="font-bold text-xl mt-8 mb-4 md:my-4 pb-2 border-b border-gray-400/75">{{ __($item['name']) }}</p>
+                            <p class="font-bold text-xl mt-8 mb-4 md:my-4 pb-2 border-b border-gray-400/75">
+                                {{ __($item['name']) }}
+                            </p>
                             @foreach ($item['links'] as $link)
-                                <x-navigation::footer.footer-navigation-link :href="route($link['route'])"
-                                                                             :active="request()->routeIs($link['route'])">
+                                <x-navigation::footer.footer-navigation-link
+                                    :href="route($link['route'])"
+                                    :active="request()->routeIs($link['route'])"
+                                >
+                                    {{ __($link['name']) }}
+                                </x-navigation::footer.footer-navigation-link>
+                            @endforeach
+                        </div>
+                    @elseif ($item['type'] === 'dropdown-blog' && ($item['enabled'] ?? false))
+                        <!-- Blog dropdown in the footer -->
+                        <div class="flex flex-col items-center md:items-start">
+                            <p class="font-bold text-xl mt-8 mb-4 md:my-4 pb-2 border-b border-gray-400/75">
+                                {{ __($item['name']) }}
+                            </p>
+                            @foreach ($item['links'] as $link)
+                                @php
+                                    $url = isset($link['params'])
+                                        ? route($link['route'], $link['params'])
+                                        : route($link['route']);
+                                @endphp
+                                <x-navigation::footer.footer-navigation-link
+                                    :href="$url"
+                                    :active="request()->routeIs($link['route'])"
+                                >
                                     {{ __($link['name']) }}
                                 </x-navigation::footer.footer-navigation-link>
                             @endforeach
@@ -108,6 +135,7 @@
                     @endif
                 @endforeach
             </div>
+
 
             <div class="mt-6 border-t border-legal-type pt-6">
                 <div class="text-center sm:flex sm:justify-between sm:text-left text-gray-400/75">
