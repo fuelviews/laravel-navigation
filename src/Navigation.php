@@ -67,7 +67,7 @@ class Navigation
             $dynamicLinks->push([
                 'name' => $state->name,
                 'route' => 'sabblog.post.metro.state.index',
-                'params' => ['state' => $state->slug],
+                'params' => ['state' => $state->slug.'#'.$state->slug],
                 'type' => 'state',
             ]);
 
@@ -76,8 +76,8 @@ class Navigation
                     'name' => $city->name,
                     'route' => 'sabblog.post.metro.city.index',
                     'params' => [
-                        'state' => $state->slug,
-                        'city' => $city->slug,
+                        'state' => $state->slug.'#'.$state->slug,
+                        'city' => $city->slug.'#'.$city->slug,
                     ],
                     'type' => 'city',
                 ]);
