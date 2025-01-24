@@ -3,7 +3,6 @@
 namespace Fuelviews\Navigation;
 
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Route;
 
 class Navigation
 {
@@ -22,24 +21,24 @@ class Navigation
                     if (empty($item['links'])) {
                         $item['links'] = [
                             [
-                                'name'     => 'Blog',
+                                'name' => 'Blog',
                                 'position' => 0,
-                                'route'    => 'sabblog.post.index',
+                                'route' => 'sabblog.post.index',
                             ],
                             [
-                                'name'     => 'Categories',
+                                'name' => 'Categories',
                                 'position' => 2,
-                                'route'    => 'sabblog.category.all',
+                                'route' => 'sabblog.category.all',
                             ],
                             [
-                                'name'     => 'Tags',
+                                'name' => 'Tags',
                                 'position' => 3,
-                                'route'    => 'sabblog.tag.all',
+                                'route' => 'sabblog.tag.all',
                             ],
                             [
-                                'name'     => 'Authors',
+                                'name' => 'Authors',
                                 'position' => 4,
-                                'route'    => 'sabblog.author.all',
+                                'route' => 'sabblog.author.all',
                             ],
                         ];
                     }
@@ -88,7 +87,6 @@ class Navigation
         return $dynamicLinks;
     }
 
-
     public function getCombinedNavigationItems(): \Illuminate\Support\Collection
     {
         $staticItems = $this->getNavigationItems();
@@ -105,16 +103,16 @@ class Navigation
             $dynamicLinks = $this->getDynamicNavigationItems();
 
             // Separate states & cities
-            $states = $dynamicLinks->filter(fn($link) => $link['type'] === 'state');
-            $cities = $dynamicLinks->filter(fn($link) => $link['type'] === 'city');
+            $states = $dynamicLinks->filter(fn ($link) => $link['type'] === 'state');
+            $cities = $dynamicLinks->filter(fn ($link) => $link['type'] === 'city');
 
             // 3) Partition the existing links by position=0
             //    "position=0" is presumably your "Blog" link
-            [$posZero, $others] = $existingLinks->partition(fn($link) => ($link['position'] ?? null) === 0);
+            [$posZero, $others] = $existingLinks->partition(fn ($link) => ($link['position'] ?? null) === 0);
 
             // 4) Sort $others by ascending position (e.g. 1,2,3,...).
             //    If some items don't have a position, they go last.
-            $othersSorted = $others->sortBy(fn($link) => $link['position'] ?? 999999);
+            $othersSorted = $others->sortBy(fn ($link) => $link['position'] ?? 999999);
 
             // 5) Rebuild the links:
             //    - All position=0 items
@@ -128,9 +126,10 @@ class Navigation
                 ->values();
 
             // 6) Update the 'blog-dropdown' with the new links array
-            $blogDropdown['links'] = $mergedLinks->map(function($link) {
+            $blogDropdown['links'] = $mergedLinks->map(function ($link) {
                 // Remove 'type' if you like or keep it
                 unset($link['type']);
+
                 return $link;
             })->toArray();
 
@@ -141,7 +140,6 @@ class Navigation
         // Finally, sort top-level items by their 'position' if needed
         return $staticItems->sortBy('position')->values();
     }
-
 
     public function isDropdownRouteActive($links): bool
     {
@@ -186,11 +184,8 @@ class Navigation
 
     public function isPreScrolledRoute(): bool
     {
-        // We can pass an array of patterns to routeIs(...).
-        // If *any* pattern matches, routeIs() returns true.
         return request()->routeIs(config('navigation.pre_scrolled_routes', []));
     }
-
 
     public function getPreScrolledRoute(): string
     {
