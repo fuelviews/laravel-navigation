@@ -25,10 +25,10 @@
                  class="{{ $attributes->get('logoClass', $logoClasses) }}"
                  alt="{{ $attributes->get('alt', config('app.name')) }}"/>
         @else
-            <div x-show="!scrolled" class="{{ $attributes->get('logoClass', $logoClasses.' text-white') }}">
+            <div x-show="!scrolled" class="{{ $attributes->get('logoClass', $logoClasses) }}">
                 <x-navigation::social.rocketman />
             </div>
-            <div x-show="scrolled" class="{{ $attributes->get('logoClass', $logoClasses.' text-black') }}">
+            <div x-show="scrolled" class="{{ $attributes->get('logoClass', $logoClasses) }}">
                 <x-navigation::social.rocketman />
             </div>
         @endif

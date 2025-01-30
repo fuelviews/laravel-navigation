@@ -1,4 +1,4 @@
-@props(['active', 'name', 'links', 'bgClass'])
+@props(['active', 'name', 'links', 'bgClass', 'route', 'params' => [], 'active' => null])
 
 @php
     $classes = ($active)
@@ -17,9 +17,20 @@
 
     <div x-show="dropdownOpen" x-transition class="w-full lg:mt-2">
         @foreach($links as $link)
-            <x-navigation::dropdown-link :href="route($link['route'])" :active="request()->routeIs($link['route'])">
-                {{ __($link['name']) }}
+            @php
+                // If 'params' exist, pass them to route()
+                $url = isset($link['params'])
+                    ? route($link['route'], $link['params'])
+                    : route($link['route']);
+            @endphp
+
+            <x-navigation::dropdown-link
+                :href="$url"
+                :active="request()->routeIs($link['route'])"
+            >
+                {{ $link['name'] }}
             </x-navigation::dropdown-link>
         @endforeach
+
     </div>
 </div>

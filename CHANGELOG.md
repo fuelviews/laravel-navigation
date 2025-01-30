@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v1.0.0 - 2025-01-30
+
+### What's Changed
+
+* feat: Add sab blog func #major by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/37
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v0.0.16...v1.0.0
+
 ## v0.0.18 - 2025-01-08
 
 ### What's Changed

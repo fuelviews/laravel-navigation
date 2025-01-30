@@ -1,4 +1,4 @@
-@props(['active', 'name', 'links', 'bgClass'])
+@props(['active', 'name', 'links', 'bgClass', 'route', 'params' => [], 'active' => null])
 
 @php
     $classes = ($active ?? false)
