@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "php": "^8.2",
+        "php": "^8.1||^8.2||^8.3||^8.4",
         "spatie/laravel-package-tools": "^1.16"
     },
     "require-dev": {
@@ -27,7 +27,7 @@
         "pestphp/pest-plugin-arch": "^2.7",
         "pestphp/pest-plugin-laravel": "^2.3",
         "ralphjsmit/laravel-glide": "^1.2.1",
-        "fuelviews/laravel-forms": "^0.0",
+        "fuelviews/laravel-forms": ">=0.0.0",
         "livewire/livewire": "^3.5"
     },
     "autoload": {
