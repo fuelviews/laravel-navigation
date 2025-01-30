@@ -31,6 +31,14 @@ return [
         ],
     ],
 
+    // dropdown blog links
+    [
+        'type' => 'dropdown-blog',
+        'position' => 2,
+        'name' => 'Blog',
+        'enabled' => true,
+    ],
+
     // scrolled routes
     'pre_scrolled_routes' => [
         'careers',
@@ -39,11 +47,11 @@ return [
     ],
 
     // phone config
-    'phone' => config('businessinfo.phone') ?: '(666) 666-6666',
+    'phone' => config('business-info.phone') ?: '(666) 666-6666',
 
     // logo config
-    'default_logo' => 'images/logo.png',
-    'transparency_logo' => 'images/logo.png',
+    'default_logo' => '',
+    'transparency_logo' => '',
 
     // navigation config
     'top_nav_enabled' => false,
