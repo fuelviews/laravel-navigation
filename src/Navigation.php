@@ -76,7 +76,7 @@ class Navigation
                     'name' => $city->name,
                     'route' => 'sabblog.post.metro.city.index',
                     'params' => [
-                        'state' => $state->slug.'#'.$state->slug,
+                        'state' => $state->slug,
                         'city' => $city->slug.'#'.$city->slug,
                     ],
                     'type' => 'city',
