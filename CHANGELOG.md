@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v1.0.1 - 2025-01-30
+
+### What's Changed
+
+* fix: Fix state child hashtag bug, add PHP-CS-Fixer by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/38
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v0.0.16...v1.0.1
+
 ## v1.0.0 - 2025-01-30
 
 ### What's Changed
