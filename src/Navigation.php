@@ -3,6 +3,7 @@
 namespace Fuelviews\Navigation;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class Navigation
 {
@@ -21,24 +22,24 @@ class Navigation
                     if (empty($item['links'])) {
                         $item['links'] = [
                             [
-                                'name' => 'Blog',
+                                'name' => Str::Title(config('sabhero-blog.dropdown.name')),
                                 'position' => 0,
-                                'route' => 'sabblog.post.index',
+                                'route' => 'sabhero-blog.post.index',
                             ],
                             [
                                 'name' => 'Categories',
                                 'position' => 2,
-                                'route' => 'sabblog.category.all',
+                                'route' => 'sabhero-blog.category.all',
                             ],
                             [
                                 'name' => 'Tags',
                                 'position' => 3,
-                                'route' => 'sabblog.tag.all',
+                                'route' => 'sabhero-blog.tag.all',
                             ],
                             [
                                 'name' => 'Authors',
                                 'position' => 4,
-                                'route' => 'sabblog.author.all',
+                                'route' => 'sabhero-blog.author.all',
                             ],
                         ];
                     }
@@ -66,7 +67,7 @@ class Navigation
         foreach ($states as $state) {
             $dynamicLinks->push([
                 'name' => $state->name,
-                'route' => 'sabblog.post.metro.state.index',
+                'route' => 'sabhero-blog.post.metro.state.index',
                 'params' => ['state' => $state->slug.'#'.$state->slug],
                 'type' => 'state',
             ]);
@@ -74,7 +75,7 @@ class Navigation
             foreach ($state->children as $city) {
                 $dynamicLinks->push([
                     'name' => $city->name,
-                    'route' => 'sabblog.post.metro.city.index',
+                    'route' => 'sabhero-blog.post.metro.state.city.index',
                     'params' => [
                         'state' => $state->slug,
                         'city' => $city->slug.'#'.$city->slug,
@@ -91,53 +92,37 @@ class Navigation
     {
         $staticItems = $this->getNavigationItems();
 
-        // 1) Locate the 'blog-dropdown'
         $blogDropdownKey = $staticItems->search(
             fn ($item) => $item['type'] === 'dropdown-blog'
         );
 
         if ($blogDropdownKey !== false) {
-            // 2) Grab the existing blog-dropdown and dynamic links
             $blogDropdown = $staticItems[$blogDropdownKey];
-            $existingLinks = collect($blogDropdown['links']); // existing sub-links
+            $existingLinks = collect($blogDropdown['links']);
             $dynamicLinks = $this->getDynamicNavigationItems();
 
-            // Separate states & cities
             $states = $dynamicLinks->filter(fn ($link) => $link['type'] === 'state');
             $cities = $dynamicLinks->filter(fn ($link) => $link['type'] === 'city');
 
-            // 3) Partition the existing links by position=0
-            //    "position=0" is presumably your "Blog" link
             [$posZero, $others] = $existingLinks->partition(fn ($link) => ($link['position'] ?? null) === 0);
 
-            // 4) Sort $others by ascending position (e.g. 1,2,3,...).
-            //    If some items don't have a position, they go last.
             $othersSorted = $others->sortBy(fn ($link) => $link['position'] ?? 999999);
 
-            // 5) Rebuild the links:
-            //    - All position=0 items
-            //    - Then all states
-            //    - Then all cities
-            //    - Then everything else
             $mergedLinks = $posZero
                 ->concat($states)
                 ->concat($cities)
                 ->concat($othersSorted)
                 ->values();
 
-            // 6) Update the 'blog-dropdown' with the new links array
             $blogDropdown['links'] = $mergedLinks->map(function ($link) {
-                // Remove 'type' if you like or keep it
                 unset($link['type']);
 
                 return $link;
             })->toArray();
 
-            // Put it back into the static items
             $staticItems[$blogDropdownKey] = $blogDropdown;
         }
 
-        // Finally, sort top-level items by their 'position' if needed
         return $staticItems->sortBy('position')->values();
     }
 
