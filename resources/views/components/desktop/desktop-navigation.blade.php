@@ -14,7 +14,6 @@
                 <x-slot name="content" x-show="open">
                     @foreach($item['links'] as $link)
                         @php
-                            // Check if params exist, otherwise fallback to route
                             $url = isset($link['params'])
                                 ? route($link['route'], $link['params'])
                                 : route($link['route']);
@@ -40,9 +39,15 @@
                             $url = isset($link['params'])
                                 ? route($link['route'], $link['params'])
                                 : route($link['route']);
+
+                            $currentPath = '/'.request()->path();
+                            $linkPath = parse_url($url, PHP_URL_PATH) ?? '';
                         @endphp
-                        <x-navigation::dropdown-link :href="$url"
-                                                     :active="request()->routeIs($link['route'])">
+
+                        <x-navigation::dropdown-link
+                            :href="$url"
+                            :active="$currentPath === $linkPath"
+                        >
                             {{ __($link['name']) }}
                         </x-navigation::dropdown-link>
                     @endforeach
