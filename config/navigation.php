@@ -36,7 +36,7 @@ return [
         'type' => 'dropdown-blog',
         'position' => 2,
         'name' => 'Blog',
-        'enabled' => true,
+        'enabled' => false,
     ],
 
     // scrolled routes
