@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v1.0.3 - 2025-02-12
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/fuelviews/laravel-navigation/pull/39
+* Disable blog dropdown when explicitly configured by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/41
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v0.0.16...v1.0.3
+
 ## v1.0.2 - 2025-02-08
 
 ### What's Changed
