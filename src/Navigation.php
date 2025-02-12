@@ -9,20 +9,22 @@ class Navigation
 {
     public function getNavigationItems(): Collection
     {
-        $items = collect(config('navigation.navigation'))
+        return collect(config('navigation.navigation'))
             ->map(function ($item) {
-                // If it's our blog dropdown AND has no 'links', provide defaults
                 if ($item['type'] === 'dropdown-blog') {
-                    // Optionally set a default 'enabled' if not present
-                    if (! array_key_exists('enabled', $item)) {
-                        $item['enabled'] = true;
+
+                    if (! class_exists(\Fuelviews\SabHeroBlog\SabHeroBlog::class)) {
+                        return null;
                     }
 
-                    // If links are not defined or are empty, supply a default set
+                    if (config('navigation.navigation.dropdown-blog.enabled') === true) {
+                        return null;
+                    }
+
                     if (empty($item['links'])) {
                         $item['links'] = [
                             [
-                                'name' => Str::Title(config('sabhero-blog.dropdown.name')),
+                                'name' => Str::title(config('sabhero-blog.dropdown.name', 'Blog')),
                                 'position' => 0,
                                 'route' => 'sabhero-blog.post.index',
                             ],
@@ -47,20 +49,23 @@ class Navigation
 
                 return $item;
             })
+            ->filter()
             ->sortBy('position')
             ->values();
-
-        return $items;
     }
 
     public function getDynamicNavigationItems(): Collection
     {
 
-        if (! class_exists(\App\Models\Metro::class)) {
+        if (! class_exists(\Fuelviews\SabHeroBlog\SabHeroBlog::class)) {
             return collect();
         }
 
-        $states = \App\Models\Metro::states()->with('children')->get();
+        if (config('navigation.navigation.dropdown-blog.enabled') === false) {
+            return collect();
+        }
+
+        $states = \Fuelviews\SabHeroBlog\Models\Metro::states()->with('children')->get();
 
         $dynamicLinks = collect();
 
