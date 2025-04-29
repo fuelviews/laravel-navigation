@@ -28,7 +28,7 @@ class Navigation
                                 'name' => Str::title(config('sabhero-blog.dropdown.name', 'Blog')),
                                 'position' => 0,
                                 'route' => 'sabhero-blog.post.index',
-                            ]
+                            ],
                         ];
 
                         // Define route mappings with fallbacks
@@ -37,20 +37,20 @@ class Navigation
                                 'name' => 'Categories',
                                 'position' => 2,
                                 'primary' => 'sabhero-blog.category.all',
-                                'fallback' => 'sabhero-blog.category.index'
+                                'fallback' => 'sabhero-blog.category.index',
                             ],
                             [
                                 'name' => 'Tags',
                                 'position' => 3,
                                 'primary' => 'sabhero-blog.tag.all',
-                                'fallback' => 'sabhero-blog.tag.index'
+                                'fallback' => 'sabhero-blog.tag.index',
                             ],
                             [
                                 'name' => 'Authors',
                                 'position' => 4,
                                 'primary' => 'sabhero-blog.author.all',
-                                'fallback' => 'sabhero-blog.author.index'
-                            ]
+                                'fallback' => 'sabhero-blog.author.index',
+                            ],
                         ];
 
                         // Process each mapping
@@ -67,7 +67,7 @@ class Navigation
                                 $item['links'][] = [
                                     'name' => $mapping['name'],
                                     'position' => $mapping['position'],
-                                    'route' => $route
+                                    'route' => $route,
                                 ];
                             }
                         }
