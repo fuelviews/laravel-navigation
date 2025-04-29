@@ -2,6 +2,16 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v1.0.4 - 2025-04-29
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/fuelviews/laravel-navigation/pull/39
+* Bump aglipanci/laravel-pint-action from 2.4 to 2.5 by @dependabot in https://github.com/fuelviews/laravel-navigation/pull/42
+* Correct the capitalization of the organization name in the funding configuration and enhance the navigation logic by implementing route mappings with fallbacks for better route handling. by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/43
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v0.0.16...v1.0.4
+
 ## v1.0.3 - 2025-02-12
 
 ### What's Changed

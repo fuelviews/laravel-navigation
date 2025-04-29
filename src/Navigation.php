@@ -3,6 +3,7 @@
 namespace Fuelviews\Navigation;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
 class Navigation
@@ -28,22 +29,48 @@ class Navigation
                                 'position' => 0,
                                 'route' => 'sabhero-blog.post.index',
                             ],
+                        ];
+
+                        // Define route mappings with fallbacks
+                        $routeMappings = [
                             [
                                 'name' => 'Categories',
                                 'position' => 2,
-                                'route' => 'sabhero-blog.category.all',
+                                'primary' => 'sabhero-blog.category.all',
+                                'fallback' => 'sabhero-blog.category.index',
                             ],
                             [
                                 'name' => 'Tags',
                                 'position' => 3,
-                                'route' => 'sabhero-blog.tag.all',
+                                'primary' => 'sabhero-blog.tag.all',
+                                'fallback' => 'sabhero-blog.tag.index',
                             ],
                             [
                                 'name' => 'Authors',
                                 'position' => 4,
-                                'route' => 'sabhero-blog.author.all',
+                                'primary' => 'sabhero-blog.author.all',
+                                'fallback' => 'sabhero-blog.author.index',
                             ],
                         ];
+
+                        // Process each mapping
+                        foreach ($routeMappings as $mapping) {
+                            $route = null;
+
+                            if (Route::has($mapping['primary'])) {
+                                $route = $mapping['primary'];
+                            } elseif (Route::has($mapping['fallback'])) {
+                                $route = $mapping['fallback'];
+                            }
+
+                            if ($route) {
+                                $item['links'][] = [
+                                    'name' => $mapping['name'],
+                                    'position' => $mapping['position'],
+                                    'route' => $route,
+                                ];
+                            }
+                        }
                     }
                 }
 
