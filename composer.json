@@ -1,8 +1,8 @@
 {
     "name": "fuelviews/laravel-navigation",
-    "description": "Laravel Navigation Package",
+    "description": "Laravel navigation package",
     "keywords": [
-        "Fuelviews",
+        "fuelviews",
         "laravel",
         "laravel-navigation"
     ],
@@ -10,23 +10,23 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "thejmitchener",
-            "email": "support@fuelviews.com",
+            "name": "Joshua MItchener",
+            "homepage": "https://fuelviews.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.3",
-        "spatie/laravel-package-tools": "^1.16"
+        "php": "^8.3||^8.2",
+        "spatie/laravel-package-tools": "^1.16",
+        "illuminate/contracts": "^10.0||^11.0||^12.0"
     },
     "require-dev": {
         "laravel/pint": "^1.14",
         "nunomaduro/collision": "^8.1.1||^7.10.0",
-        "orchestra/testbench": "^9.0.0||^8.22.0",
+        "orchestra/testbench": "^10.2||^9.0.0||^8.22.0",
         "pestphp/pest": "^3.0||^2.34",
         "pestphp/pest-plugin-arch": "^3.0||^2.7",
-        "pestphp/pest-plugin-laravel": "^3.0||^2.3",
-        "ralphjsmit/laravel-glide": "^1.2.1",
+        "pestphp/pest-plugin-laravel": "^3.2||^2.3",
         "fuelviews/laravel-forms": "^0.0",
         "livewire/livewire": "^3.5"
     },

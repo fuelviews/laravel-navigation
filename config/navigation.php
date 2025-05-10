@@ -29,21 +29,23 @@ return [
                 ],
             ],
         ],
-    ],
 
-    // dropdown blog links
-    [
-        'type' => 'dropdown-blog',
-        'position' => 2,
-        'name' => 'Blog',
-        'enabled' => false,
+        // dropdown blog links
+        [
+            'type' => 'dropdown-blog',
+            'position' => 2,
+            'name' => 'Blog',
+            'enabled' => false,
+        ],
     ],
 
     // scrolled routes
     'pre_scrolled_routes' => [
         'careers',
         'contact',
-        'forms.thank-you',
+        'services',
+        'forms.*',
+        'sabhero-blog.*'
     ],
 
     // phone config
