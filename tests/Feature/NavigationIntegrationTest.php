@@ -102,6 +102,7 @@ test('navigation components can access navigation items', function () {
                        $data['navigationItems'][0]['name'] === 'Home' &&
                        $data['navigationItems'][1]['name'] === 'About';
             }
+
             return true; // Allow other view renders to pass through
         })
         ->andReturn(
@@ -113,7 +114,7 @@ test('navigation components can access navigation items', function () {
 
     // Render a view that would typically use the navigation items
     $html = view('navigation::components.desktop.desktop-navigation', [
-        'navigationItems' => $navigationItems
+        'navigationItems' => $navigationItems,
     ])->render();
 
     expect($html)->toBe('<div>Navigation</div>');

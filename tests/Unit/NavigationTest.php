@@ -4,7 +4,6 @@ use Fuelviews\Navigation\Navigation;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Route;
 
 beforeEach(function () {
     $this->navigation = new Navigation();

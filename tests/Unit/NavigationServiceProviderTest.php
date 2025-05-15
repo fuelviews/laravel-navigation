@@ -27,7 +27,7 @@ test('it configures the package correctly', function () {
             MobileNavigation::class,
             DesktopNavigation::class,
             DesktopDropdownButton::class,
-            Spacer::class
+            Spacer::class,
         ])
         ->once()
         ->andReturnSelf();
