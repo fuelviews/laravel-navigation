@@ -9,7 +9,6 @@ use Fuelviews\Navigation\View\Components\Mobile\MobileNavigation;
 use Fuelviews\Navigation\View\Components\NavigationScroll;
 use Fuelviews\Navigation\View\Components\Spacer;
 use Fuelviews\Navigation\View\Components\TopBar;
-use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -21,6 +20,15 @@ class NavigationServiceProvider extends PackageServiceProvider
             ->name('navigation')
             ->hasConfigFile('navigation')
             ->hasViews('navigation')
-            ->hasViewComponents('navigation', NavigationScroll::class, TopBar::class, Footer::class, MobileNavigation::class, DesktopNavigation::class, DesktopDropdownButton::class, Spacer::class);
+            ->hasViewComponents(
+                'navigation',
+                NavigationScroll::class,
+                TopBar::class,
+                Footer::class,
+                MobileNavigation::class,
+                DesktopNavigation::class,
+                DesktopDropdownButton::class,
+                Spacer::class
+            );
     }
 }
