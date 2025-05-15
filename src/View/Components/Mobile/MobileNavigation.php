@@ -24,6 +24,8 @@ class MobileNavigation extends Component
 
     public function render()
     {
-        return view('navigation::components.mobile.mobile-navigation');
+        return view('navigation::components.mobile.mobile-navigation', [
+            'bgClass' => $this->bgClass,
+        ]);
     }
 }
