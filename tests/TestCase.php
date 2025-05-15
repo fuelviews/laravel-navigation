@@ -8,12 +8,13 @@ use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Fuelviews\\Navigation\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName): string => 'Fuelviews\\Navigation\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
@@ -24,7 +25,7 @@ class TestCase extends Orchestra
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    protected function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'testing');
 

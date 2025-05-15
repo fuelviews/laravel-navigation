@@ -3,17 +3,18 @@
 namespace Fuelviews\Navigation\View\Components;
 
 use Illuminate\View\Component;
+use Illuminate\View\View;
 
 class NavigationScroll extends Component
 {
-    public $isTransparent;
+    public mixed $isTransparent;
 
     public function __construct($isTransparent = false)
     {
         $this->isTransparent = $isTransparent;
     }
 
-    public function render()
+    public function render(): View
     {
         return view('navigation::components.navigation-scroll');
     }

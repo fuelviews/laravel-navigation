@@ -3,17 +3,18 @@
 namespace Fuelviews\Navigation\View\Components\Desktop;
 
 use Illuminate\View\Component;
+use Illuminate\View\View;
 
 class DesktopNavigation extends Component
 {
-    public $trigger;
+    public mixed $trigger;
 
     public function __construct($trigger = null)
     {
         $this->trigger = $trigger;
     }
 
-    public function render()
+    public function render(): View
     {
         return view('navigation::components.desktop.desktop-navigation', [
             'trigger' => $this->trigger,

@@ -2,13 +2,15 @@
 
 namespace Fuelviews\Navigation\View\Components\Desktop;
 
+use Illuminate\Support\Collection;
 use Illuminate\View\Component;
+use Illuminate\View\View;
 
 class DesktopDropdownButton extends Component
 {
-    public $name;
+    public string $name;
 
-    public $links;
+    public Collection $links;
 
     public function __construct($name, $links)
     {
@@ -16,7 +18,7 @@ class DesktopDropdownButton extends Component
         $this->links = collect($links);
     }
 
-    public function render()
+    public function render(): View
     {
         return view('navigation::components.desktop.desktop-dropdown-button');
     }
