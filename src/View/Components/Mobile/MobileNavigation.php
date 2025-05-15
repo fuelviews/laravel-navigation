@@ -8,6 +8,7 @@ use Illuminate\View\View;
 class MobileNavigation extends Component
 {
     private const string DEFAULT_BG_EVEN = 'bg-gray-100';
+
     private const string DEFAULT_BG_ODD = 'bg-white';
 
     public mixed $bgClass;
