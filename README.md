@@ -1,5 +1,9 @@
 # Laravel navigation package
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/fuelviews/laravel-navigation.svg?style=flat-square)](https://packagist.org/packages/fuelviews/laravel-navigation)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/fuelviews/laravel-navigation/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/fuelviews/laravel-navigation/actions/workflows/run-tests.yml?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/fuelviews/laravel-navigation/php-cs-fixer.yml?label=code%20style&style=flat-square)](https://github.com/fuelviews/laravel-navigation/actions/workflows/php-cs-fixer.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/fuelviews/laravel-navigation.svg?style=flat-square)](https://packagist.org/packages/fuelviews/laravel-navigation)
 
 ## Installation
 
@@ -15,12 +19,6 @@ You can publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag="navigation-config"
-```
-
-Optionally, you can publish the logo view using:
-
-```bash
-php artisan vendor:publish --tag="navigation-logo"
 ```
 
 Optionally, you can publish the views using:
@@ -60,8 +58,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Joshua Mitchener](https://github.com/thejmitchener)
-- [Daniel Clark](https://github.com/sweatybreeze)
+- [Thejmitchener](https://github.com/thejmitchener)
+- [Sweatybreeze](https://github.com/sweatybreeze)
 - [Fuelviews](https://github.com/fuelviews)
 - [All Contributors](../../contributors)
 
