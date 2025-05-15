@@ -31,4 +31,19 @@ class NavigationServiceProvider extends PackageServiceProvider
                 Spacer::class
             );
     }
+
+    public function register(): void
+    {
+        parent::register();
+
+        // Register the Navigation singleton
+        $this->app->singleton('navigation', function ($app) {
+            return new Navigation();
+        });
+    }
+
+    public function provides(): array
+    {
+        return ['navigation'];
+    }
 }
