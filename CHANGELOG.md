@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v1.0.6 - 2025-05-15
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v1.0.6...v1.0.6
+
 ## v1.0.5 - 2025-05-10
 
 ### What's Changed

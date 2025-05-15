@@ -54,19 +54,19 @@ class Navigation
                         ];
 
                         // Process each mapping
-                        foreach ($routeMappings as $mapping) {
+                        foreach ($routeMappings as $routeMapping) {
                             $route = null;
 
-                            if (Route::has($mapping['primary'])) {
-                                $route = $mapping['primary'];
-                            } elseif (Route::has($mapping['fallback'])) {
-                                $route = $mapping['fallback'];
+                            if (Route::has($routeMapping['primary'])) {
+                                $route = $routeMapping['primary'];
+                            } elseif (Route::has($routeMapping['fallback'])) {
+                                $route = $routeMapping['fallback'];
                             }
 
                             if ($route) {
                                 $item['links'][] = [
-                                    'name' => $mapping['name'],
-                                    'position' => $mapping['position'],
+                                    'name' => $routeMapping['name'],
+                                    'position' => $routeMapping['position'],
                                     'route' => $route,
                                 ];
                             }
@@ -120,23 +120,23 @@ class Navigation
         return $dynamicLinks;
     }
 
-    public function getCombinedNavigationItems(): \Illuminate\Support\Collection
+    public function getCombinedNavigationItems(): Collection
     {
-        $staticItems = $this->getNavigationItems();
+        $navigationItems = $this->getNavigationItems();
 
-        $blogDropdownKey = $staticItems->search(
-            fn ($item) => $item['type'] === 'dropdown-blog'
+        $blogDropdownKey = $navigationItems->search(
+            fn ($item): bool => $item['type'] === 'dropdown-blog'
         );
 
         if ($blogDropdownKey !== false) {
-            $blogDropdown = $staticItems[$blogDropdownKey];
+            $blogDropdown = $navigationItems[$blogDropdownKey];
             $existingLinks = collect($blogDropdown['links']);
             $dynamicLinks = $this->getDynamicNavigationItems();
 
-            $states = $dynamicLinks->filter(fn ($link) => $link['type'] === 'state');
-            $cities = $dynamicLinks->filter(fn ($link) => $link['type'] === 'city');
+            $states = $dynamicLinks->filter(fn ($link): bool => $link['type'] === 'state');
+            $cities = $dynamicLinks->filter(fn ($link): bool => $link['type'] === 'city');
 
-            [$posZero, $others] = $existingLinks->partition(fn ($link) => ($link['position'] ?? null) === 0);
+            [$posZero, $others] = $existingLinks->partition(fn ($link): bool => ($link['position'] ?? null) === 0);
 
             $othersSorted = $others->sortBy(fn ($link) => $link['position'] ?? 999999);
 
@@ -146,16 +146,16 @@ class Navigation
                 ->concat($othersSorted)
                 ->values();
 
-            $blogDropdown['links'] = $mergedLinks->map(function ($link) {
+            $blogDropdown['links'] = $mergedLinks->map(function (array $link): array {
                 unset($link['type']);
 
                 return $link;
             })->toArray();
 
-            $staticItems[$blogDropdownKey] = $blogDropdown;
+            $navigationItems[$blogDropdownKey] = $blogDropdown;
         }
 
-        return $staticItems->sortBy('position')->values();
+        return $navigationItems->sortBy('position')->values();
     }
 
     public function isDropdownRouteActive($links): bool

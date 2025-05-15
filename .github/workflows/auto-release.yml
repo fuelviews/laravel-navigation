@@ -39,7 +39,14 @@ jobs:
           DEFAULT_BUMP: patch
           WITH_V: true
           RELEASE_BRANCHES: main
-          BRANCH_HISTORY: last
+          BRANCH_HISTORY: full
+
+      - name: Get Previous Tag
+        id: get_previous_tag
+        shell: bash
+        run: |
+          PREVIOUS_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          echo "previous_tag=$PREVIOUS_TAG" >> $GITHUB_OUTPUT
 
       - name: Generate Release Notes
         id: generate_release_notes
@@ -49,6 +56,7 @@ jobs:
           NEW_TAG: ${{ steps.bump_version.outputs.new_tag }}
           OWNER: ${{ github.repository_owner }}
           REPO: ${{ github.event.repository.name }}
+          PREVIOUS_TAG: ${{ steps.get_previous_tag.outputs.previous_tag }}
         run: |
           response=$(curl -s -X POST \
             -H "Authorization: Bearer $TOKEN" \
@@ -57,7 +65,8 @@ jobs:
             -d @- <<EOF
           {
             "tag_name": "$NEW_TAG",
-            "target_commitish": "main"
+            "target_commitish": "main",
+            "previous_tag_name": "$PREVIOUS_TAG"
           }
           EOF
           )

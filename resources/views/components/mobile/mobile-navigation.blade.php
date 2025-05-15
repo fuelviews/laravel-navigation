@@ -1,7 +1,8 @@
-@props(['navigationItems'])
-
 <nav>
     @foreach(Navigation::getCombinedNavigationItems() as $index => $item)
+        @php
+            $bgClass = $index % 2 === 0 ? 'bg-gray-100' : 'bg-white';
+        @endphp
 
         @if ($item['type'] === 'link')
             @php
@@ -17,7 +18,6 @@
             <x-navigation::mobile.mobile-navigation-link
                 :href="$linkUrl"
                 :active="$active"
-                :bgClass="$bgClass($index)"
             >
                 {{ __($item['name']) }}
             </x-navigation::mobile.mobile-navigation-link>
@@ -44,7 +44,7 @@
                 :name="$item['name']"
                 :links="$item['links']"
                 :active="$dropdownActive"
-                :bgClass="$bgClass($index)"
+                :bgClass="$bgClass"
             />
 
         @elseif($item['type'] === 'dropdown-blog' && ($item['enabled'] ?? false) && array_key_exists('links', $item))
@@ -69,7 +69,7 @@
                 :name="$item['name']"
                 :links="$item['links']"
                 :active="$dropdownActive"
-                :bgClass="$bgClass($index)"
+                :bgClass="$bgClass"
             />
         @endif
     @endforeach
