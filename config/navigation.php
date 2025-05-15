@@ -45,11 +45,14 @@ return [
         'contact',
         'services',
         'forms.*',
-        'sabhero-blog.*'
+        'sabhero-blog.*',
     ],
 
     // phone config
-    'phone' => config('business-info.phone') ?: '(666) 666-6666',
+    'phone' => config('business-info.phone')
+        ?: 'businessinfo.phone'
+        ?: 'sab-info.phone'
+        ?: '(666) 666-6666',
 
     // logo config
     'default_logo' => '',
