@@ -1,4 +1,4 @@
-@foreach(Navigation::getCombinedNavigationItems() as $item)
+@foreach(Navigation::getNavigationItems() as $item)
     @if($item['type'] === 'link')
         <x-navigation::desktop.desktop-navigation-link :href="route($item['route'])"
                                                        :active="request()->routeIs($item['route'])">
@@ -13,41 +13,8 @@
 
                 <x-slot name="content" x-show="open">
                     @foreach($item['links'] as $link)
-                        @php
-                            $url = isset($link['params'])
-                                ? route($link['route'], $link['params'])
-                                : route($link['route']);
-                        @endphp
-                        <x-navigation::dropdown-link :href="$url"
+                        <x-navigation::dropdown-link :href="route($link['route'])"
                                                      :active="request()->routeIs($link['route'])">
-                            {{ __($link['name']) }}
-                        </x-navigation::dropdown-link>
-                    @endforeach
-                </x-slot>
-            </x-navigation::desktop.desktop-dropdown>
-        </div>
-    @elseif($item['type'] === 'dropdown-blog' && ($item['enabled'] ?? false))
-        <div x-data="{ open: false }" class="hidden md:flex sm:items-center">
-            <x-navigation::desktop.desktop-dropdown align="left">
-                <x-slot name="trigger">
-                    <x-navigation::desktop.desktop-dropdown-button :name="$item['name']" :links="$item['links'] ?? []" />
-                </x-slot>
-
-                <x-slot name="content" x-show="open">
-                    @foreach($item['links'] as $link)
-                        @php
-                            $url = isset($link['params'])
-                                ? route($link['route'], $link['params'])
-                                : route($link['route']);
-
-                            $currentPath = '/'.request()->path();
-                            $linkPath = parse_url($url, PHP_URL_PATH) ?? '';
-                        @endphp
-
-                        <x-navigation::dropdown-link
-                            :href="$url"
-                            :active="$currentPath === $linkPath"
-                        >
                             {{ __($link['name']) }}
                         </x-navigation::dropdown-link>
                     @endforeach
