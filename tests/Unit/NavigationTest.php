@@ -4,6 +4,7 @@ use Fuelviews\Navigation\Navigation;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Route;
 
 beforeEach(function () {
     $this->navigation = new Navigation();
@@ -157,16 +158,10 @@ test('isTransparentNavBackground returns the configured transparent nav backgrou
 test('isPreScrolledRoute returns true when current route is in pre-scrolled routes', function () {
     Config::set('navigation.pre_scrolled_routes', ['home', 'about']);
 
-    // Mock the Request facade with setUserResolver to avoid BadMethodCallException
-    $requestMock = Mockery::mock('Illuminate\Http\Request');
-    $requestMock->shouldReceive('routeIs')
-        ->with(['home', 'about'])
-        ->andReturn(true);
-    $requestMock->shouldReceive('setUserResolver')
-        ->andReturn($requestMock);
-
-    // Replace the request instance in the container
-    app()->instance('request', $requestMock);
+    // Mock the Route facade to return 'home' as the current route name
+    Route::shouldReceive('currentRouteName')
+        ->once()
+        ->andReturn('home');
 
     expect($this->navigation->isPreScrolledRoute())->toBeTrue();
 });
@@ -174,16 +169,10 @@ test('isPreScrolledRoute returns true when current route is in pre-scrolled rout
 test('isPreScrolledRoute returns false when current route is not in pre-scrolled routes', function () {
     Config::set('navigation.pre_scrolled_routes', ['home', 'about']);
 
-    // Mock the Request facade with setUserResolver to avoid BadMethodCallException
-    $requestMock = Mockery::mock('Illuminate\Http\Request');
-    $requestMock->shouldReceive('routeIs')
-        ->with(['home', 'about'])
-        ->andReturn(false);
-    $requestMock->shouldReceive('setUserResolver')
-        ->andReturn($requestMock);
-
-    // Replace the request instance in the container
-    app()->instance('request', $requestMock);
+    // Mock the Route facade to return 'contact' as the current route name (not in the list)
+    Route::shouldReceive('currentRouteName')
+        ->once()
+        ->andReturn('contact');
 
     expect($this->navigation->isPreScrolledRoute())->toBeFalse();
 });
