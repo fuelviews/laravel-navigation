@@ -50,8 +50,6 @@ return [
 
     // phone config
     'phone' => config('business-info.phone')
-        ?: 'businessinfo.phone'
-        ?: 'sab-info.phone'
         ?: '(666) 666-6666',
 
     // logo config

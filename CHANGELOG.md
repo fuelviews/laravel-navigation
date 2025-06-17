@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v1.0.7 - 2025-06-17
+
+### What's Changed
+
+* Refactor navigation configuration to streamline phone and logo settings, and update navigation item retrieval methods for improved clarity and performance. Removed unused dropdown-blog logic to simplify the navigation structure. by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/49
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v1.0.6...v1.0.7
+
 ## v1.0.6 - 2025-05-15
 
 **Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v1.0.6...v1.0.6
