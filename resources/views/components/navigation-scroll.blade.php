@@ -2,21 +2,32 @@
         open: false,
         dropdownOpen: false,
         scrolled: {{ Navigation::getPreScrolledRoute() }},
+        logoScrolled: {{ Navigation::getPreScrolledRoute() }},
         showEstimate: false,
         isMobile: window.innerWidth < 640,
-        transparentNav: {{  Navigation::isTransparentNavBackground() ? 'true' : 'false' }}
+        transparentNav: {{  Navigation::isTransparentNavBackground() ? 'true' : 'false' }},
+        logoSwap: {{  Navigation::isLogoSwapEnabled() ? 'true' : 'false' }}
     }"
      x-init="
         if (transparentNav) {
             scrolled = (window.scrollY > window.innerHeight * 0.05) || {{ Navigation::getPreScrolledRoute() }};
-            showEstimate = (window.scrollY > window.innerHeight * 0.25);
-            window.addEventListener('scroll', () => {
-                if (!{{ Navigation::getPreScrolledRoute() }}) {
-                    scrolled = (window.scrollY > window.innerHeight * 0.05);
-                }
-                showEstimate = (window.scrollY > window.innerHeight * 0.25);
-            });
         }
+        if (logoSwap) {
+            logoScrolled = (window.scrollY > window.innerHeight * 0.05) || {{ Navigation::getPreScrolledRoute() }};
+        }
+        
+        showEstimate = (window.scrollY > window.innerHeight * 0.25);
+        
+        window.addEventListener('scroll', () => {
+            if (transparentNav && !{{ Navigation::getPreScrolledRoute() }}) {
+                scrolled = (window.scrollY > window.innerHeight * 0.05);
+            }
+            if (logoSwap && !{{ Navigation::getPreScrolledRoute() }}) {
+                logoScrolled = (window.scrollY > window.innerHeight * 0.05);
+            }
+            showEstimate = (window.scrollY > window.innerHeight * 0.25);
+        });
+        
         window.addEventListener('resize', () => {
             isMobile = window.innerWidth < 640;
             if (!isMobile) showEstimate = false;

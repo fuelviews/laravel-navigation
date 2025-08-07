@@ -4,7 +4,8 @@
         $socialMedia = config('business-info.social_media');
     }
 
-    $logoShape = Navigation::getLogoShape();
+    // Footer always uses transparency logo shape
+    $logoShape = Navigation::getTransparencyLogoShape();
     $logoClasses = '';
     if ($logoShape === 'horizontal') {
         $logoClasses = 'mx-auto w-64 lg:w-72';
@@ -22,12 +23,20 @@
             <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
                 <div>
                     <div class="flex justify-start text-footer-type">
-                        @if (Navigation::getDefaultLogo() && Navigation::isLogoSwapEnabled() && Navigation::isTransparentNavBackground())
-                            <img
-                                {{ glide()->src(Navigation::getTransparencyLogo()) }}
-                                class="{{ $logoClasses }}"
-                                alt="{{ config('app.name') }}"
-                            />
+                        @if (Navigation::getDefaultLogo())
+                            @if (Navigation::isLogoSwapEnabled())
+                                <img
+                                    {{ glide()->src(Navigation::getTransparencyLogo()) }}
+                                    class="{{ $logoClasses }}"
+                                    alt="{{ config('app.name') }}"
+                                />
+                            @else
+                                <img
+                                    {{ glide()->src(Navigation::getDefaultLogo()) }}
+                                    class="{{ $logoClasses }}"
+                                    alt="{{ config('app.name') }}"
+                                />
+                            @endif
                         @else
                             <div class="{{ $logoClasses }}">
                                 <x-navigation::social.rocketman />
