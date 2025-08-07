@@ -107,10 +107,10 @@ test('getDefaultLogo returns the configured default logo', function () {
     expect($this->navigation->getDefaultLogo())->toBe('default-logo.png');
 });
 
-test('getLogoShape returns the configured logo shape', function () {
-    Config::set('navigation.logo_shape', 'rounded');
+test('getDefaultLogoShape returns the configured default logo shape', function () {
+    Config::set('navigation.default_logo_shape', 'rounded');
 
-    expect($this->navigation->getLogoShape())->toBe('rounded');
+    expect($this->navigation->getDefaultLogoShape())->toBe('rounded');
 });
 
 test('getTransparencyLogo returns the configured transparency logo', function () {
