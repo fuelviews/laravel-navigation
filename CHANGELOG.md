@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v1.0.9 - 2025-08-07
+
+### What's Changed
+
+* Replace dropdown blog links with a commented-out single link for articles and update logo shape configuration to separate default and transparency states. #MAJOR by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/52
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v1.0.8...v1.0.9
+
 ## v1.0.8 - 2025-08-07
 
 ### What's Changed
