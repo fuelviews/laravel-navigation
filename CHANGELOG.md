@@ -2,6 +2,15 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v1.0.8 - 2025-08-07
+
+### What's Changed
+
+* Bump stefanzweifel/git-auto-commit-action from 5 to 6 by @dependabot[bot] in https://github.com/fuelviews/laravel-navigation/pull/50
+* Refactor logo handling to support separate default and transparency logo shapes and classes, enabling conditional logo swapping based on scroll state and configuration settings. Adjust navigation scroll behavior to manage logo swap visibility dynamically on scroll and resize events. #major by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/51
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v1.0.7...v1.0.8
+
 ## v1.0.7 - 2025-06-17
 
 ### What's Changed

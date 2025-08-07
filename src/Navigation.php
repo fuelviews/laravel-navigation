@@ -22,9 +22,14 @@ class Navigation
         return config('navigation.default_logo');
     }
 
-    public function getLogoShape()
+    public function getDefaultLogoShape()
     {
-        return config('navigation.logo_shape');
+        return config('navigation.default_logo_shape', 'square');
+    }
+
+    public function getTransparencyLogoShape()
+    {
+        return config('navigation.transparency_logo_shape', 'horizontal');
     }
 
     public function getTransparencyLogo()
