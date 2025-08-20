@@ -30,13 +30,13 @@ return [
             ],
         ],
 
-        // dropdown blog links
-        [
-            'type' => 'dropdown-blog',
-            'position' => 2,
-            'name' => 'Blog',
-            'enabled' => false,
-        ],
+        // single link
+        /*[
+            'type' => 'link',
+            'position' => 6,
+            'name' => 'Articles',
+            'route' => 'sabhero-article.post.index',
+        ],*/
     ],
 
     // scrolled routes
@@ -50,8 +50,6 @@ return [
 
     // phone config
     'phone' => config('business-info.phone')
-        ?: 'businessinfo.phone'
-        ?: 'sab-info.phone'
         ?: '(666) 666-6666',
 
     // logo config
@@ -63,6 +61,7 @@ return [
     'logo_swap_enabled' => true,
     'transparent_nav_background' => true,
 
-    // footer stuff, needs to be moved to navigation config
-    'logo_shape' => 'horizontal', // Can be 'horizontal', 'vertical', or 'square'
+    // logo shape config
+    'default_logo_shape' => 'square', // Can be 'horizontal', 'vertical', or 'square'
+    'transparency_logo_shape' => 'horizontal', // Can be 'horizontal', 'vertical', or 'square'
 ];
