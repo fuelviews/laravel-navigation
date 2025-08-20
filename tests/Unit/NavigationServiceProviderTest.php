@@ -1,6 +1,5 @@
 <?php
 
-use Fuelviews\Navigation\NavigationServiceProvider;
 use Fuelviews\Navigation\Components\Desktop\DesktopDropdownButton;
 use Fuelviews\Navigation\Components\Desktop\DesktopNavigation;
 use Fuelviews\Navigation\Components\Footer\Footer;
@@ -8,6 +7,7 @@ use Fuelviews\Navigation\Components\Mobile\MobileNavigation;
 use Fuelviews\Navigation\Components\NavigationScroll;
 use Fuelviews\Navigation\Components\Spacer;
 use Fuelviews\Navigation\Components\TopBar;
+use Fuelviews\Navigation\NavigationServiceProvider;
 use Spatie\LaravelPackageTools\Package;
 
 test('it configures the package correctly', function () {

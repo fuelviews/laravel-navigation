@@ -4,7 +4,7 @@ use Fuelviews\Navigation\Components\NavigationScroll;
 use Illuminate\View\View;
 
 test('it renders the correct view', function () {
-    $component = new NavigationScroll();
+    $component = new NavigationScroll;
 
     $view = $component->render();
 
@@ -13,7 +13,7 @@ test('it renders the correct view', function () {
 });
 
 test('it defaults isTransparent to false', function () {
-    $component = new NavigationScroll();
+    $component = new NavigationScroll;
 
     expect($component->isTransparent)->toBeFalse();
 });

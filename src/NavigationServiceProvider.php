@@ -79,7 +79,7 @@ class NavigationServiceProvider extends PackageServiceProvider
         $items = config('navigation.navigation', []);
 
         foreach ($items as $index => $item) {
-            if (!isset($item['type'], $item['position'])) {
+            if (! isset($item['type'], $item['position'])) {
                 report(new \InvalidArgumentException(
                     "Navigation item at index {$index} missing required fields 'type' or 'position'"
                 ));

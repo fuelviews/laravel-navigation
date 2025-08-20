@@ -4,7 +4,7 @@ use Fuelviews\Navigation\Components\Desktop\DesktopNavigation;
 use Illuminate\View\View;
 
 test('it renders the correct view', function () {
-    $component = new DesktopNavigation();
+    $component = new DesktopNavigation;
 
     $view = $component->render();
 
@@ -22,7 +22,7 @@ test('it passes trigger to the view', function () {
 });
 
 test('it handles null trigger', function () {
-    $component = new DesktopNavigation();
+    $component = new DesktopNavigation;
 
     $view = $component->render();
 
@@ -40,7 +40,7 @@ test('it handles different trigger types', function () {
     expect($component->render()->getData()['trigger'])->toBe($arrayTrigger);
 
     // Test with an object
-    $objectTrigger = new stdClass();
+    $objectTrigger = new stdClass;
     $objectTrigger->property = 'value';
     $component = new DesktopNavigation($objectTrigger);
     expect($component->render()->getData()['trigger'])->toBe($objectTrigger);

@@ -4,7 +4,7 @@ use Fuelviews\Navigation\Components\Mobile\MobileNavigation;
 use Illuminate\View\View;
 
 test('it renders the correct view', function () {
-    $component = new MobileNavigation();
+    $component = new MobileNavigation;
 
     $view = $component->render();
 
@@ -22,7 +22,7 @@ test('it passes bgClass to the view', function () {
 });
 
 test('it returns default background classes for even and odd indices when no bgClass is provided', function () {
-    $component = new MobileNavigation();
+    $component = new MobileNavigation;
 
     expect($component->getBackgroundClass(0))->toBe('bg-gray-100');
     expect($component->getBackgroundClass(1))->toBe('bg-white');

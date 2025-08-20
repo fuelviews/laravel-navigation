@@ -39,19 +39,19 @@ class NavigationValidateCommand extends Command
 
     protected function validateNavigationItem(array $item, int $index, array &$errors, array &$warnings, array &$positions): void
     {
-        if (!isset($item['type'])) {
+        if (! isset($item['type'])) {
             $errors[] = "Navigation item at index {$index} is missing 'type' field";
-        } elseif (!in_array($item['type'], ['link', 'dropdown'])) {
+        } elseif (! in_array($item['type'], ['link', 'dropdown'])) {
             $errors[] = "Navigation item at index {$index} has invalid type '{$item['type']}'. Must be 'link' or 'dropdown'";
         }
 
-        if (!isset($item['position'])) {
+        if (! isset($item['position'])) {
             $errors[] = "Navigation item at index {$index} is missing 'position' field";
         } else {
             $positions[] = $item['position'];
         }
 
-        if (!isset($item['name'])) {
+        if (! isset($item['name'])) {
             $errors[] = "Navigation item at index {$index} is missing 'name' field";
         }
 
@@ -64,29 +64,29 @@ class NavigationValidateCommand extends Command
 
     protected function validateLinkItem(array $item, int $index, array &$errors, array &$warnings): void
     {
-        if (!isset($item['route'])) {
+        if (! isset($item['route'])) {
             $errors[] = "Link navigation item at index {$index} is missing 'route' field";
-        } elseif (!Route::has($item['route'])) {
+        } elseif (! Route::has($item['route'])) {
             $warnings[] = "Route '{$item['route']}' for navigation item at index {$index} does not exist";
         }
     }
 
     protected function validateDropdownItem(array $item, int $index, array &$errors, array &$warnings): void
     {
-        if (!isset($item['links'])) {
+        if (! isset($item['links'])) {
             $errors[] = "Dropdown navigation item at index {$index} is missing 'links' field";
-        } elseif (!is_array($item['links'])) {
+        } elseif (! is_array($item['links'])) {
             $errors[] = "Dropdown navigation item at index {$index} 'links' field must be an array";
         } elseif (empty($item['links'])) {
             $warnings[] = "Dropdown navigation item at index {$index} has no links";
         } else {
             foreach ($item['links'] as $linkIndex => $link) {
-                if (!isset($link['name'])) {
+                if (! isset($link['name'])) {
                     $errors[] = "Dropdown link at index {$linkIndex} for navigation item {$index} is missing 'name' field";
                 }
-                if (!isset($link['route'])) {
+                if (! isset($link['route'])) {
                     $errors[] = "Dropdown link at index {$linkIndex} for navigation item {$index} is missing 'route' field";
-                } elseif (!Route::has($link['route'])) {
+                } elseif (! Route::has($link['route'])) {
                     $warnings[] = "Route '{$link['route']}' for dropdown link at index {$linkIndex} does not exist";
                 }
             }
@@ -104,7 +104,7 @@ class NavigationValidateCommand extends Command
 
     protected function displayResults(array $errors, array $warnings): void
     {
-        if (!empty($errors)) {
+        if (! empty($errors)) {
             $this->error('❌ Validation failed with '.count($errors).' error(s):');
             foreach ($errors as $error) {
                 $this->line("  • {$error}");
@@ -112,7 +112,7 @@ class NavigationValidateCommand extends Command
             $this->newLine();
         }
 
-        if (!empty($warnings)) {
+        if (! empty($warnings)) {
             $this->warn('⚠️  Found '.count($warnings).' warning(s):');
             foreach ($warnings as $warning) {
                 $this->line("  • {$warning}");

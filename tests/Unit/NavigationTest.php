@@ -193,13 +193,13 @@ test('getPreScrolledRoute returns "true" or "false" as string based on isPreScro
     // Test when route is in pre-scrolled routes
     Config::set('navigation.pre_scrolled_routes', ['home', 'about']);
     Route::shouldReceive('currentRouteName')->once()->andReturn('home');
-    
+
     $navigation = new Navigation(config('navigation', []));
     expect($navigation->getPreScrolledRoute())->toBe('true');
 
-    // Test when route is not in pre-scrolled routes  
+    // Test when route is not in pre-scrolled routes
     Route::shouldReceive('currentRouteName')->once()->andReturn('contact');
-    
+
     $navigation = new Navigation(config('navigation', []));
     expect($navigation->getPreScrolledRoute())->toBe('false');
 });

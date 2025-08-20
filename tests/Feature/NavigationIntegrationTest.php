@@ -95,7 +95,7 @@ test('navigation components can access navigation items', function () {
 
     // Mock the view to capture the data passed to it with more flexible parameter matching
     View::shouldReceive('make')
-        ->withArgs(function ($viewName, $data = [], $mergeData = []) use ($navigationItems) {
+        ->withArgs(function ($viewName, $data = [], $mergeData = []) {
             // Check if navigationItems exists in the data and matches our expected items
             if (isset($data['navigationItems'])) {
                 return $data['navigationItems']->count() === 2 &&
