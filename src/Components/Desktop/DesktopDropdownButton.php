@@ -1,6 +1,6 @@
 <?php
 
-namespace Fuelviews\Navigation\View\Components\Desktop;
+namespace Fuelviews\Navigation\Components\Desktop;
 
 use Illuminate\Support\Collection;
 use Illuminate\View\Component;

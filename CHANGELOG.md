@@ -2,6 +2,51 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v2.0.0 - 2025-08-20
+
+### What's Changed
+
+* Refactor package with laravel boost #major by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/56
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v1.0.9...v2.0.0
+
+## v1.0.10 - 2025-08-20
+
+### What's Changed
+
+* Refactor package with laravel boost by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/54
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v1.0.9...v1.0.10
+
+## v1.0.9 - 2025-08-07
+
+### What's Changed
+
+* Replace dropdown blog links with a commented-out single link for articles and update logo shape configuration to separate default and transparency states. #MAJOR by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/52
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v1.0.8...v1.0.9
+
+## v1.0.8 - 2025-08-07
+
+### What's Changed
+
+* Bump stefanzweifel/git-auto-commit-action from 5 to 6 by @dependabot[bot] in https://github.com/fuelviews/laravel-navigation/pull/50
+* Refactor logo handling to support separate default and transparency logo shapes and classes, enabling conditional logo swapping based on scroll state and configuration settings. Adjust navigation scroll behavior to manage logo swap visibility dynamically on scroll and resize events. #major by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/51
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v1.0.7...v1.0.8
+
+## v1.0.7 - 2025-06-17
+
+### What's Changed
+
+* Refactor navigation configuration to streamline phone and logo settings, and update navigation item retrieval methods for improved clarity and performance. Removed unused dropdown-blog logic to simplify the navigation structure. by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/49
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v1.0.6...v1.0.7
+
+## v1.0.6 - 2025-05-15
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v1.0.6...v1.0.6
+
 ## v1.0.5 - 2025-05-10
 
 ### What's Changed

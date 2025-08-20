@@ -95,7 +95,7 @@ test('navigation components can access navigation items', function () {
 
     // Mock the view to capture the data passed to it with more flexible parameter matching
     View::shouldReceive('make')
-        ->withArgs(function ($viewName, $data = [], $mergeData = []) use ($navigationItems) {
+        ->withArgs(function ($viewName, $data = [], $mergeData = []) {
             // Check if navigationItems exists in the data and matches our expected items
             if (isset($data['navigationItems'])) {
                 return $data['navigationItems']->count() === 2 &&
@@ -123,14 +123,14 @@ test('navigation components can access navigation items', function () {
 test('navigation configuration is accessible to components', function () {
     // Set up configuration values
     Config::set('navigation.default_logo', 'default-logo.png');
-    Config::set('navigation.logo_shape', 'rounded');
+    Config::set('navigation.default_logo_shape', 'rounded');
     Config::set('navigation.transparency_logo', 'transparent-logo.png');
     Config::set('navigation.phone', '123-456-7890');
     Config::set('navigation.top_nav_enabled', true);
 
     // Verify the configuration values are accessible through the Navigation facade
     expect(Navigation::getDefaultLogo())->toBe('default-logo.png');
-    expect(Navigation::getLogoShape())->toBe('rounded');
+    expect(Navigation::getDefaultLogoShape())->toBe('rounded');
     expect(Navigation::getTransparencyLogo())->toBe('transparent-logo.png');
     expect(Navigation::getPhone())->toBe('123-456-7890');
     expect(Navigation::isTopNavEnabled())->toBeTrue();

@@ -11,6 +11,6 @@ class Navigation extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \Fuelviews\Navigation\Navigation::class;
+        return 'navigation';
     }
 }

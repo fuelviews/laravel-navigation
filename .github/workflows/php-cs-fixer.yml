@@ -19,7 +19,6 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      # Step to set the ARGS depending on whether the .php-cs-fixer.dist.php file exists
       - name: Set config argument
         id: set-config
         run: |
@@ -35,6 +34,6 @@ jobs:
           args: ${{ steps.set-config.outputs.ARGS }}
 
       - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v6
         with:
           commit_message: Fix styling

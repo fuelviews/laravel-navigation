@@ -1,6 +1,6 @@
 <?php
 
-namespace Fuelviews\Navigation\View\Components\Mobile;
+namespace Fuelviews\Navigation\Components\Mobile;
 
 use Illuminate\View\Component;
 use Illuminate\View\View;
