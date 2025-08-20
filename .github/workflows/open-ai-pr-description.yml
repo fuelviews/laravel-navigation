@@ -9,15 +9,19 @@ on:
 
 permissions:
   pull-requests: write
-  contents: write
+  contents: read
 
 jobs:
   openai-pr-description:
     runs-on: ubuntu-22.04
-    # Run the job only if the actor is NOT Dependabot
     if: ${{ !startsWith(github.actor, 'dependabot') }}
     steps:
-      - uses: platisd/openai-pr-description@master
+      - uses: platisd/openai-pr-description@v1.4.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           openai_api_key: ${{ secrets.OPEN_AI_PR_DESCRIPTION_API_KEY }}
+          overwrite_description: true
+          openai_model: gpt-4o
+          temperature: 0.2
+          completion_prompt: |
+            Summarize the changes of this PR in no more than 3 sentences. In a structured way, list the changes of this PR.

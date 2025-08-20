@@ -1,13 +1,13 @@
 <?php
 
+use Fuelviews\Navigation\Components\Desktop\DesktopDropdownButton;
+use Fuelviews\Navigation\Components\Desktop\DesktopNavigation;
+use Fuelviews\Navigation\Components\Footer\Footer;
+use Fuelviews\Navigation\Components\Mobile\MobileNavigation;
+use Fuelviews\Navigation\Components\NavigationScroll;
+use Fuelviews\Navigation\Components\Spacer;
+use Fuelviews\Navigation\Components\TopBar;
 use Fuelviews\Navigation\NavigationServiceProvider;
-use Fuelviews\Navigation\View\Components\Desktop\DesktopDropdownButton;
-use Fuelviews\Navigation\View\Components\Desktop\DesktopNavigation;
-use Fuelviews\Navigation\View\Components\Footer\Footer;
-use Fuelviews\Navigation\View\Components\Mobile\MobileNavigation;
-use Fuelviews\Navigation\View\Components\NavigationScroll;
-use Fuelviews\Navigation\View\Components\Spacer;
-use Fuelviews\Navigation\View\Components\TopBar;
 use Spatie\LaravelPackageTools\Package;
 
 test('it configures the package correctly', function () {
@@ -18,6 +18,7 @@ test('it configures the package correctly', function () {
     $package->shouldReceive('name')->with('navigation')->once()->andReturnSelf();
     $package->shouldReceive('hasConfigFile')->with('navigation')->once()->andReturnSelf();
     $package->shouldReceive('hasViews')->with('navigation')->once()->andReturnSelf();
+    $package->shouldReceive('publishesServiceProvider')->with('NavigationServiceProvider')->once()->andReturnSelf();
     $package->shouldReceive('hasViewComponents')
         ->withArgs([
             'navigation',
@@ -31,6 +32,9 @@ test('it configures the package correctly', function () {
         ])
         ->once()
         ->andReturnSelf();
+    $package->shouldReceive('hasCommand')->twice()->andReturnSelf();
+    $package->shouldReceive('hasInstallCommand')->once()->andReturnSelf();
+    $package->shouldReceive('sharesDataWithAllViews')->once()->andReturnSelf();
 
     // Create an instance of the service provider
     $serviceProvider = new NavigationServiceProvider(app());

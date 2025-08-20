@@ -1,10 +1,11 @@
 @php
     /* social media accounts */
-    if (config('businessinfo.social_media') !== null) {
-        $socialMedia = config('businessinfo.social_media');
+    if (config('business-info.social_media') !== null) {
+        $socialMedia = config('business-info.social_media');
     }
 
-    $logoShape = Navigation::getLogoShape();
+    // Footer always uses transparency logo shape
+    $logoShape = Navigation::getTransparencyLogoShape();
     $logoClasses = '';
     if ($logoShape === 'horizontal') {
         $logoClasses = 'mx-auto w-64 lg:w-72';
@@ -22,12 +23,20 @@
             <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
                 <div>
                     <div class="flex justify-start text-footer-type">
-                        @if (Navigation::getDefaultLogo() && Navigation::isLogoSwapEnabled() && Navigation::isTransparentNavBackground())
-                            <img
-                                {{ glide()->src(Navigation::getTransparencyLogo()) }}
-                                class="{{ $logoClasses }}"
-                                alt="{{ config('app.name') }}"
-                            />
+                        @if (Navigation::getDefaultLogo())
+                            @if (Navigation::isLogoSwapEnabled())
+                                <img
+                                    {{ glide()->src(Navigation::getTransparencyLogo()) }}
+                                    class="{{ $logoClasses }}"
+                                    alt="{{ config('app.name') }}"
+                                />
+                            @else
+                                <img
+                                    {{ glide()->src(Navigation::getDefaultLogo()) }}
+                                    class="{{ $logoClasses }}"
+                                    alt="{{ config('app.name') }}"
+                                />
+                            @endif
                         @else
                             <div class="{{ $logoClasses }}">
                                 <x-navigation::social.rocketman />
@@ -61,8 +70,8 @@
 
                 <div>
                     <p class="mx-auto mt-4 max-w-md text-center leading-relaxed text-footer-type">
-                        @if (config('businessinfo.elevator-pitch') !== null)
-                            {{ config('businessinfo.elevator-pitch') }}
+                        @if (config('business-info.elevator-pitch') !== null)
+                            {{ config('business-info.elevator-pitch') }}
                         @endif
                     </p>
 
@@ -83,7 +92,7 @@
                     <p class="font-bold text-xl mt-8 mb-4 md:my-4 pb-2 border-b border-gray-400/75">
                         {{ __('Menu') }}
                     </p>
-                    @foreach (Navigation::getCombinedNavigationItems() as $item)
+                    @foreach (Navigation::getNavigationItems() as $item)
                         @if ($item['type'] === 'link')
                             <!-- Non-Dropdown Links -->
                             <x-navigation::footer.footer-navigation-link
@@ -97,7 +106,7 @@
                 </div>
 
                 <!-- Other columns: handle BOTH dropdown and dropdown-blog -->
-                @foreach (Navigation::getCombinedNavigationItems() as $item)
+                @foreach (Navigation::getNavigationItems() as $item)
                     @if ($item['type'] === 'dropdown')
                         <div class="flex flex-col items-center md:items-start">
                             <p class="font-bold text-xl mt-8 mb-4 md:my-4 pb-2 border-b border-gray-400/75">
@@ -106,26 +115,6 @@
                             @foreach ($item['links'] as $link)
                                 <x-navigation::footer.footer-navigation-link
                                     :href="route($link['route'])"
-                                    :active="request()->routeIs($link['route'])"
-                                >
-                                    {{ __($link['name']) }}
-                                </x-navigation::footer.footer-navigation-link>
-                            @endforeach
-                        </div>
-                    @elseif ($item['type'] === 'dropdown-blog' && ($item['enabled'] ?? false))
-                        <!-- Blog dropdown in the footer -->
-                        <div class="flex flex-col items-center md:items-start">
-                            <p class="font-bold text-xl mt-8 mb-4 md:my-4 pb-2 border-b border-gray-400/75">
-                                {{ __($item['name']) }}
-                            </p>
-                            @foreach ($item['links'] as $link)
-                                @php
-                                    $url = isset($link['params'])
-                                        ? route($link['route'], $link['params'])
-                                        : route($link['route']);
-                                @endphp
-                                <x-navigation::footer.footer-navigation-link
-                                    :href="$url"
                                     :active="request()->routeIs($link['route'])"
                                 >
                                     {{ __($link['name']) }}
@@ -180,8 +169,8 @@
 
                     <p class="mt-4 text-sm sm:order-first sm:mt-0">
                         &copy; {{ date('Y') }}
-                        @if (config('businessinfo.legal-name') !== null)
-                            {{ config('businessinfo.legal-name') }}
+                        @if (config('business-info.legal-name') !== null)
+                            {{ config('business-info.legal-name') }}
                         @endif
                     </p>
                 </div>

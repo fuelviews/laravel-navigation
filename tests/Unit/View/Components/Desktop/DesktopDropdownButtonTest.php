@@ -1,6 +1,6 @@
 <?php
 
-use Fuelviews\Navigation\View\Components\Desktop\DesktopDropdownButton;
+use Fuelviews\Navigation\Components\Desktop\DesktopDropdownButton;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 
