@@ -1,6 +1,6 @@
 <?php
 
-use Fuelviews\Navigation\View\Components\NavigationScroll;
+use Fuelviews\Navigation\Components\NavigationScroll;
 use Illuminate\View\View;
 
 test('it renders the correct view', function () {

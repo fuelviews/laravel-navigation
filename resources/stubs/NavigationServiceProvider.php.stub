@@ -1,9 +1,10 @@
 <?php
 
-namespace Fuelviews\Navigation;
+namespace App\Providers;
 
 use Fuelviews\Navigation\Commands\NavigationListCommand;
 use Fuelviews\Navigation\Commands\NavigationValidateCommand;
+use Fuelviews\Navigation\Navigation;
 use Fuelviews\Navigation\Components\Desktop\DesktopDropdownButton;
 use Fuelviews\Navigation\Components\Desktop\DesktopNavigation;
 use Fuelviews\Navigation\Components\Footer\Footer;
@@ -24,7 +25,6 @@ class NavigationServiceProvider extends PackageServiceProvider
             ->name('navigation')
             ->hasConfigFile('navigation')
             ->hasViews('navigation')
-            ->publishesServiceProvider('NavigationServiceProvider')
             ->hasViewComponents(
                 'navigation',
                 NavigationScroll::class,
@@ -36,22 +36,7 @@ class NavigationServiceProvider extends PackageServiceProvider
                 Spacer::class
             )
             ->hasCommand(NavigationListCommand::class)
-            ->hasCommand(NavigationValidateCommand::class)
-            ->hasInstallCommand(function (InstallCommand $command) {
-                $command
-                    ->startWith(function (InstallCommand $command) {
-                        $command->info('Installing Laravel Navigation package...');
-                    })
-                    ->publishConfigFile()
-                    ->endWith(function (InstallCommand $command) {
-                        $command->info('Laravel Navigation has been installed successfully!');
-                        $command->info('The service provider is automatically registered via package discovery.');
-                    });
-            })
-            ->sharesDataWithAllViews(
-                'navigationConfig',
-                fn () => config('navigation')
-            );
+            ->hasCommand(NavigationValidateCommand::class);
     }
 
     public function register(): void

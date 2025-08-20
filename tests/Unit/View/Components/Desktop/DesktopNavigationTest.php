@@ -1,6 +1,6 @@
 <?php
 
-use Fuelviews\Navigation\View\Components\Desktop\DesktopNavigation;
+use Fuelviews\Navigation\Components\Desktop\DesktopNavigation;
 use Illuminate\View\View;
 
 test('it renders the correct view', function () {

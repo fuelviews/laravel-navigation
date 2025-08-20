@@ -1,6 +1,6 @@
 <?php
 
-use Fuelviews\Navigation\View\Components\Mobile\MobileNavigation;
+use Fuelviews\Navigation\Components\Mobile\MobileNavigation;
 use Illuminate\View\View;
 
 test('it renders the correct view', function () {
