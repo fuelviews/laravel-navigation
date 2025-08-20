@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Route;
 
 class Navigation
 {
-    public function __construct(protected array $config) {}
+    public function __construct(protected array $config)
+    {
+    }
 
     public function getNavigationItems(): Collection
     {
