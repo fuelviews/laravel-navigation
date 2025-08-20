@@ -6,10 +6,6 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
-beforeEach(function () {
-    $this->navigation = new Navigation();
-});
-
 test('getNavigationItems returns a collection', function () {
     Config::set('navigation.navigation', [
         [
@@ -26,7 +22,8 @@ test('getNavigationItems returns a collection', function () {
         ],
     ]);
 
-    $items = $this->navigation->getNavigationItems();
+    $navigation = new Navigation(config('navigation', []));
+    $items = $navigation->getNavigationItems();
 
     expect($items)->toBeInstanceOf(Collection::class);
     expect($items)->toHaveCount(2);
@@ -50,7 +47,8 @@ test('getNavigationItems sorts items by position', function () {
         ],
     ]);
 
-    $items = $this->navigation->getNavigationItems();
+    $navigation = new Navigation(config('navigation', []));
+    $items = $navigation->getNavigationItems();
 
     expect($items[0]['name'])->toBe('Home');
     expect($items[1]['name'])->toBe('About');
@@ -78,7 +76,8 @@ test('isDropdownRouteActive returns true when current route matches a link in th
     // Replace the request instance in the container
     app()->instance('request', $requestMock);
 
-    expect($this->navigation->isDropdownRouteActive($links))->toBeTrue();
+    $navigation = new Navigation(config('navigation', []));
+    expect($navigation->isDropdownRouteActive($links))->toBeTrue();
 });
 
 test('isDropdownRouteActive returns false when current route does not match any link in the dropdown', function () {
@@ -98,61 +97,72 @@ test('isDropdownRouteActive returns false when current route does not match any 
     // Replace the request instance in the container
     app()->instance('request', $requestMock);
 
-    expect($this->navigation->isDropdownRouteActive($links))->toBeFalse();
+    $navigation = new Navigation(config('navigation', []));
+    expect($navigation->isDropdownRouteActive($links))->toBeFalse();
 });
 
 test('getDefaultLogo returns the configured default logo', function () {
     Config::set('navigation.default_logo', 'default-logo.png');
 
-    expect($this->navigation->getDefaultLogo())->toBe('default-logo.png');
+    $navigation = new Navigation(config('navigation', []));
+    expect($navigation->getDefaultLogo())->toBe('default-logo.png');
 });
 
 test('getDefaultLogoShape returns the configured default logo shape', function () {
     Config::set('navigation.default_logo_shape', 'rounded');
 
-    expect($this->navigation->getDefaultLogoShape())->toBe('rounded');
+    $navigation = new Navigation(config('navigation', []));
+    expect($navigation->getDefaultLogoShape())->toBe('rounded');
 });
 
 test('getTransparencyLogo returns the configured transparency logo', function () {
     Config::set('navigation.transparency_logo', 'transparent-logo.png');
 
-    expect($this->navigation->getTransparencyLogo())->toBe('transparent-logo.png');
+    $navigation = new Navigation(config('navigation', []));
+    expect($navigation->getTransparencyLogo())->toBe('transparent-logo.png');
 });
 
 test('getPhone returns the configured phone number', function () {
     Config::set('navigation.phone', '123-456-7890');
 
-    expect($this->navigation->getPhone())->toBe('123-456-7890');
+    $navigation = new Navigation(config('navigation', []));
+    expect($navigation->getPhone())->toBe('123-456-7890');
 });
 
 test('isTopNavEnabled returns the configured top nav enabled status', function () {
     Config::set('navigation.top_nav_enabled', true);
 
-    expect($this->navigation->isTopNavEnabled())->toBeTrue();
+    $navigation = new Navigation(config('navigation', []));
+    expect($navigation->isTopNavEnabled())->toBeTrue();
 
     Config::set('navigation.top_nav_enabled', false);
 
-    expect($this->navigation->isTopNavEnabled())->toBeFalse();
+    $navigation = new Navigation(config('navigation', []));
+    expect($navigation->isTopNavEnabled())->toBeFalse();
 });
 
 test('isLogoSwapEnabled returns the configured logo swap enabled status', function () {
     Config::set('navigation.logo_swap_enabled', true);
 
-    expect($this->navigation->isLogoSwapEnabled())->toBeTrue();
+    $navigation = new Navigation(config('navigation', []));
+    expect($navigation->isLogoSwapEnabled())->toBeTrue();
 
     Config::set('navigation.logo_swap_enabled', false);
 
-    expect($this->navigation->isLogoSwapEnabled())->toBeFalse();
+    $navigation = new Navigation(config('navigation', []));
+    expect($navigation->isLogoSwapEnabled())->toBeFalse();
 });
 
 test('isTransparentNavBackground returns the configured transparent nav background status', function () {
     Config::set('navigation.transparent_nav_background', true);
 
-    expect($this->navigation->isTransparentNavBackground())->toBeTrue();
+    $navigation = new Navigation(config('navigation', []));
+    expect($navigation->isTransparentNavBackground())->toBeTrue();
 
     Config::set('navigation.transparent_nav_background', false);
 
-    expect($this->navigation->isTransparentNavBackground())->toBeFalse();
+    $navigation = new Navigation(config('navigation', []));
+    expect($navigation->isTransparentNavBackground())->toBeFalse();
 });
 
 test('isPreScrolledRoute returns true when current route is in pre-scrolled routes', function () {
@@ -163,7 +173,8 @@ test('isPreScrolledRoute returns true when current route is in pre-scrolled rout
         ->once()
         ->andReturn('home');
 
-    expect($this->navigation->isPreScrolledRoute())->toBeTrue();
+    $navigation = new Navigation(config('navigation', []));
+    expect($navigation->isPreScrolledRoute())->toBeTrue();
 });
 
 test('isPreScrolledRoute returns false when current route is not in pre-scrolled routes', function () {
@@ -174,17 +185,21 @@ test('isPreScrolledRoute returns false when current route is not in pre-scrolled
         ->once()
         ->andReturn('contact');
 
-    expect($this->navigation->isPreScrolledRoute())->toBeFalse();
+    $navigation = new Navigation(config('navigation', []));
+    expect($navigation->isPreScrolledRoute())->toBeFalse();
 });
 
 test('getPreScrolledRoute returns "true" or "false" as string based on isPreScrolledRoute', function () {
-    // Mock isPreScrolledRoute to return true
-    $navigation = $this->createPartialMock(Navigation::class, ['isPreScrolledRoute']);
-    $navigation->method('isPreScrolledRoute')->willReturn(true);
+    // Test when route is in pre-scrolled routes
+    Config::set('navigation.pre_scrolled_routes', ['home', 'about']);
+    Route::shouldReceive('currentRouteName')->once()->andReturn('home');
+
+    $navigation = new Navigation(config('navigation', []));
     expect($navigation->getPreScrolledRoute())->toBe('true');
 
-    // Mock isPreScrolledRoute to return false
-    $navigation = $this->createPartialMock(Navigation::class, ['isPreScrolledRoute']);
-    $navigation->method('isPreScrolledRoute')->willReturn(false);
+    // Test when route is not in pre-scrolled routes
+    Route::shouldReceive('currentRouteName')->once()->andReturn('contact');
+
+    $navigation = new Navigation(config('navigation', []));
     expect($navigation->getPreScrolledRoute())->toBe('false');
 });

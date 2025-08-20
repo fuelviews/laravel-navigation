@@ -2,64 +2,68 @@
 
 namespace Fuelviews\Navigation;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Route;
 
 class Navigation
 {
-    public function getNavigationItems(): \Illuminate\Support\Collection
+    public function __construct(protected array $config)
     {
-        return collect(config('navigation.navigation'))->sortBy('position')->values();
     }
 
-    public function isDropdownRouteActive($links): bool
+    public function getNavigationItems(): Collection
     {
-        return collect($links)->contains(fn ($link) => request()->routeIs($link['route']));
-
+        return collect($this->config['navigation'] ?? [])->sortBy('position')->values();
     }
 
-    public function getDefaultLogo()
+    public function isDropdownRouteActive(array $links): bool
     {
-        return config('navigation.default_logo');
+        return collect($links)->contains(fn (array $link) => request()->routeIs($link['route']));
     }
 
-    public function getDefaultLogoShape()
+    public function getDefaultLogo(): string
     {
-        return config('navigation.default_logo_shape', 'square');
+        return $this->config['default_logo'] ?? '';
     }
 
-    public function getTransparencyLogoShape()
+    public function getDefaultLogoShape(): string
     {
-        return config('navigation.transparency_logo_shape', 'horizontal');
+        return $this->config['default_logo_shape'] ?? 'square';
     }
 
-    public function getTransparencyLogo()
+    public function getTransparencyLogoShape(): string
     {
-        return config('navigation.transparency_logo');
+        return $this->config['transparency_logo_shape'] ?? 'horizontal';
     }
 
-    public function getPhone()
+    public function getTransparencyLogo(): string
     {
-        return config('navigation.phone');
+        return $this->config['transparency_logo'] ?? '';
     }
 
-    public function isTopNavEnabled()
+    public function getPhone(): string
     {
-        return config('navigation.top_nav_enabled');
+        return $this->config['phone'] ?? '';
     }
 
-    public function isLogoSwapEnabled()
+    public function isTopNavEnabled(): bool
     {
-        return config('navigation.logo_swap_enabled');
+        return $this->config['top_nav_enabled'] ?? false;
     }
 
-    public function isTransparentNavBackground()
+    public function isLogoSwapEnabled(): bool
     {
-        return config('navigation.transparent_nav_background');
+        return $this->config['logo_swap_enabled'] ?? true;
+    }
+
+    public function isTransparentNavBackground(): bool
+    {
+        return $this->config['transparent_nav_background'] ?? true;
     }
 
     public function isPreScrolledRoute(): bool
     {
-        return in_array(Route::currentRouteName(), config('navigation.pre_scrolled_routes', []), true);
+        return in_array(Route::currentRouteName(), $this->config['pre_scrolled_routes'] ?? [], true);
     }
 
     public function getPreScrolledRoute(): string

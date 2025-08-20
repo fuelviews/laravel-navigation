@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v1.0.10 - 2025-08-20
+
+### What's Changed
+
+* Refactor package with laravel boost by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/54
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v1.0.9...v1.0.10
+
 ## v1.0.9 - 2025-08-07
 
 ### What's Changed
