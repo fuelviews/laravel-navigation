@@ -4,6 +4,8 @@
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/fuelviews/laravel-navigation/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/fuelviews/laravel-navigation/actions/workflows/run-tests.yml?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/fuelviews/laravel-navigation/php-cs-fixer.yml?label=code%20style&style=flat-square)](https://github.com/fuelviews/laravel-navigation/actions/workflows/php-cs-fixer.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/fuelviews/laravel-navigation.svg?style=flat-square)](https://packagist.org/packages/fuelviews/laravel-navigation)
+[![PHP Version](https://img.shields.io/badge/PHP-^8.3-blue.svg?style=flat-square)](https://php.net)
+[![Laravel Version](https://img.shields.io/badge/Laravel-^10|^11|^12-red.svg?style=flat-square)](https://laravel.com)
 
 A comprehensive and flexible Laravel navigation package that provides beautiful, responsive navigation components with Alpine.js interactions and Tailwind CSS styling. Perfect for building modern Laravel applications with professional navigation experiences.
 
@@ -12,11 +14,10 @@ A comprehensive and flexible Laravel navigation package that provides beautiful,
 
 - PHP 8.3+
 - Laravel 10.x, 11.x, or 12.x
-- Alpine.js (included with Livewire)
+- Livewire
 - Tailwind CSS
 
 ## 🚀 Installation
-
 Install the package via Composer:
 
 ```bash
@@ -48,7 +49,7 @@ php artisan vendor:publish --tag="navigation-config"
 php artisan vendor:publish --tag="navigation-views"
 
 # Publish service provider for advanced customization (optional)
-php artisan vendor:publish --tag="laravel-package-tools-service-provider"
+php artisan vendor:publish --tag="navigation-provider"
 ```
 
 ## ⚙️ Configuration
