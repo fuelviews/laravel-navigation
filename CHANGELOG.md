@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v2.0.1 - 2025-08-27
+
+### What's Changed
+
+* remove desktop scroll link transitions by @sweatybreeze in https://github.com/fuelviews/laravel-navigation/pull/59
+
+### New Contributors
+
+* @sweatybreeze made their first contribution in https://github.com/fuelviews/laravel-navigation/pull/59
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v2.0.0...v2.0.1
+
 ## v2.0.0 - 2025-08-20
 
 ### What's Changed

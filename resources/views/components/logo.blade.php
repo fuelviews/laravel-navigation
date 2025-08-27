@@ -1,7 +1,7 @@
 @php
     $defaultLogoShape = Navigation::getDefaultLogoShape();
     $transparencyLogoShape = Navigation::getTransparencyLogoShape();
-    
+
     // Classes for default logo
     $defaultLogoClasses = '';
     if ($defaultLogoShape === 'horizontal') {
@@ -11,7 +11,7 @@
     } elseif ($defaultLogoShape === 'square') {
         $defaultLogoClasses = 'mx-auto w-24 lg:w-32';
     }
-    
+
     // Classes for transparency logo
     $transparencyLogoClasses = '';
     if ($transparencyLogoShape === 'horizontal') {
