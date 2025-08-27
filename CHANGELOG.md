@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v2.0.3 - 2025-08-27
+
+### What's Changed
+
+* changed default font on buttons by @sweatybreeze in https://github.com/fuelviews/laravel-navigation/pull/61
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v2.0.2...v2.0.3
+
 ## v2.0.2 - 2025-08-27
 
 ### What's Changed
