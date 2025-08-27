@@ -1,5 +1,5 @@
 <button @click="open = !open" onclick="Livewire.dispatch('openModal')"
-        class="font-brand flex rounded-md bg-alt px-2 py-2 text-md md:text-lg font-bold text-white hover:bg-cta hover:text-black break-keep text-nowrap">
+        class="font-sans flex rounded-md bg-alt px-2 py-2 text-md md:text-lg font-bold text-white hover:bg-cta hover:text-black break-keep text-nowrap">
     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
          class="my-auto mr-2"
          height="1.2em"
