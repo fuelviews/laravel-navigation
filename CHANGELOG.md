@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v2.0.2 - 2025-08-27
+
+### What's Changed
+
+* change hamburger color by @sweatybreeze in https://github.com/fuelviews/laravel-navigation/pull/60
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v2.0.1...v2.0.2
+
 ## v2.0.1 - 2025-08-27
 
 ### What's Changed
