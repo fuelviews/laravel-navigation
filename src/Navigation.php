@@ -63,7 +63,26 @@ class Navigation
 
     public function isPreScrolledRoute(): bool
     {
-        return in_array(Route::currentRouteName(), $this->config['pre_scrolled_routes'] ?? [], true);
+        $currentRoute = Route::currentRouteName();
+        $preScrolledRoutes = $this->config['pre_scrolled_routes'] ?? [];
+
+        foreach ($preScrolledRoutes as $route) {
+            // Check for exact match first
+            if ($currentRoute === $route) {
+                return true;
+            }
+
+            // Check for wildcard match
+            if (str_contains($route, '*')) {
+                $pattern = preg_quote($route, '/');
+                $pattern = str_replace('\\*', '.*', $pattern);
+                if (preg_match('/^' . $pattern . '$/', $currentRoute)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     public function getPreScrolledRoute(): string
