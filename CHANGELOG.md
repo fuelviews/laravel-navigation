@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v2.0.4 - 2025-08-28
+
+### What's Changed
+
+* Enhance navigation config by adding new routes and improve route matching logic to support wildcard patterns for pre-scrolled routes. by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/62
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v2.0.3...v2.0.4
+
 ## v2.0.3 - 2025-08-27
 
 ### What's Changed
