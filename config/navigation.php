@@ -45,7 +45,10 @@ return [
         'contact',
         'services',
         'forms.*',
-        'sabhero-blog.*',
+        'sabhero-article.*',
+        'portfolio',
+        'privacy-policy',
+        'terms-and-conditions',
     ],
 
     // phone config
