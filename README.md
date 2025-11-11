@@ -100,9 +100,9 @@ Define your navigation structure with support for simple links and dropdown menu
 'logo_swap_enabled' => true,
 'transparent_nav_background' => true,
 
-// logo shape config
-'default_logo_shape' => 'square', // Can be 'horizontal', 'vertical', or 'square'
-'transparency_logo_shape' => 'horizontal', // Can be 'horizontal', 'vertical', or 'square'
+// logo shape config: 'horizontal', 'vertical', or 'square'
+'default_logo_shape' => 'square',
+'transparency_logo_shape' => 'horizontal',
 ```
 
 ### Pre-scrolled Routes
@@ -115,7 +115,10 @@ Define routes that should have a "scrolled" appearance from page load:
     'contact',
     'services',
     'forms.*',
-    'sabhero-blog.*',
+    'sabhero-articles.*',
+    'portfolio',
+    'privacy-policy',
+    'terms-and-conditions',
 ],
 ```
 
