@@ -35,7 +35,7 @@ return [
             'type' => 'link',
             'position' => 6,
             'name' => 'Articles',
-            'route' => 'sabhero-article.post.index',
+            'route' => 'sabhero-articles.post.index',
         ],*/
     ],
 
@@ -45,7 +45,7 @@ return [
         'contact',
         'services',
         'forms.*',
-        'sabhero-article.*',
+        'sabhero-articles.*',
         'portfolio',
         'privacy-policy',
         'terms-and-conditions',
@@ -53,7 +53,7 @@ return [
 
     // phone config
     'phone' => config('business-info.phone')
-        ?: '(666) 666-6666',
+        ?: '(777) 777-7777',
 
     // logo config
     'default_logo' => '',
@@ -64,7 +64,7 @@ return [
     'logo_swap_enabled' => true,
     'transparent_nav_background' => true,
 
-    // logo shape config
-    'default_logo_shape' => 'square', // Can be 'horizontal', 'vertical', or 'square'
-    'transparency_logo_shape' => 'horizontal', // Can be 'horizontal', 'vertical', or 'square'
+    // logo shape config: 'horizontal', 'vertical', or 'square'
+    'default_logo_shape' => 'square',
+    'transparency_logo_shape' => 'horizontal',
 ];
