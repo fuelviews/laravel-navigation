@@ -2,6 +2,17 @@
 
 All notable changes to `laravel-navigation` will be documented in this file.
 
+## v2.0.5 - 2025-11-11
+
+### What's Changed
+
+* Bump anothrNick/github-tag-action from 1.73.0 to 1.75.0 by @dependabot[bot] in https://github.com/fuelviews/laravel-navigation/pull/64
+* Bump platisd/openai-pr-description from 1.4.0 to 1.5.0 by @dependabot[bot] in https://github.com/fuelviews/laravel-navigation/pull/65
+* Bump actions/checkout from 4 to 5 by @dependabot[bot] in https://github.com/fuelviews/laravel-navigation/pull/63
+* Configure git attributes and ignore rules for better merge handling and export; update dependencies to specific versions for stability; correct navigation routes and update default phone number; clarify logo shape comments in config and README. by @thejmitchener in https://github.com/fuelviews/laravel-navigation/pull/67
+
+**Full Changelog**: https://github.com/fuelviews/laravel-navigation/compare/v2.0.4...v2.0.5
+
 ## v2.0.4 - 2025-08-28
 
 ### What's Changed
